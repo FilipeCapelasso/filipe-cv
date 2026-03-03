@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filipe Dantas | Dev & Security Portfolio</title>
+    <title>Filipe Dantas | Portfólio & Currículo</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,17 +12,16 @@
             --card: #1e293b;
             --text: #f1f5f9;
             --accent: #10b981;
-            --warning: #ef4444;
+            --muted: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        /* Navbar fixa */
+        /* Navegação */
         nav {
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -30,167 +29,188 @@
             border-bottom: 1px solid #334155;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 30px;
         }
 
         nav a {
             color: var(--text);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
             transition: 0.3s;
             cursor: pointer;
+            text-transform: uppercase;
         }
 
         nav a:hover { color: var(--primary); }
 
-        .container { max-width: 1000px; margin: 100px auto 50px; padding: 0 20px; }
+        .container { max-width: 1100px; margin: 100px auto 50px; padding: 0 20px; }
 
-        /* Transição de página */
-        .page { display: none; animation: fadeIn 0.5s ease forwards; }
+        /* Controle de Páginas */
+        .page { display: none; animation: fadeIn 0.4s ease forwards; }
         .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Estilo Currículo (Home) */
+        .cv-header { text-align: left; border-bottom: 2px solid var(--primary); padding-bottom: 20px; margin-bottom: 30px; }
+        .cv-header h1 { font-size: 2.8rem; font-weight: 800; line-height: 1; }
+        .cv-header .subtitle { font-size: 1.1rem; color: var(--muted); margin-top: 10px; font-weight: 400; }
 
-        /* Estilo do Currículo (Home) */
-        header { 
-            background: linear-gradient(135deg, #1e3a8a, #2563eb); 
-            padding: 50px; border-radius: 16px; text-align: center; margin-bottom: 30px;
-        }
-        
-        .btn-main {
-            background: var(--accent); color: white; padding: 12px 25px;
-            border-radius: 8px; text-decoration: none; font-weight: bold;
-            display: inline-block; margin-top: 20px; transition: 0.3s;
-        }
-        .btn-main:hover { transform: scale(1.05); background: #059669; }
-
-        /* Estilo dos Projetos */
-        .project-card {
-            background: var(--card); border-radius: 16px; padding: 30px;
-            margin-bottom: 40px; border: 1px solid #334155;
-        }
-        .project-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
-        .project-header h2 { color: var(--accent); }
-        
-        .project-img {
-            width: 100%; height: auto; border-radius: 12px;
-            margin-bottom: 20px; border: 2px solid #334155;
-            background: #000;
+        .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .cv-section { margin-bottom: 30px; }
+        .cv-section h2 { 
+            font-size: 1.2rem; 
+            color: var(--text); 
+            text-transform: uppercase; 
+            margin-bottom: 15px; 
+            border-bottom: 1px solid #334155;
+            padding-bottom: 5px;
         }
 
-        .tech-tag {
-            font-family: 'Fira Code', monospace; font-size: 0.8rem;
-            background: #334155; padding: 5px 10px; border-radius: 4px; color: var(--primary);
-        }
+        .info-group { margin-bottom: 15px; }
+        .info-group strong { color: var(--accent); display: block; margin-bottom: 5px; }
 
-        .warning-box {
-            background: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--warning);
-            padding: 15px; margin: 20px 0; font-size: 0.9rem;
-        }
+        /* Listas de Habilidades e Cursos */
+        .list-items { list-style: none; }
+        .list-items li { margin-bottom: 8px; position: relative; padding-left: 15px; }
+        .list-items li::before { content: "•"; position: absolute; left: 0; color: var(--primary); }
 
-        footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.8rem; }
+        /* Botão Download */
+        .download-bar { background: #1e3a8a; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
+        .btn-dl { background: var(--accent); color: white; padding: 10px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .btn-dl:hover { background: #059669; }
+
+        /* Estilo Projetos */
+        .project-display { background: var(--card); border-radius: 12px; padding: 40px; border: 1px solid #334155; }
+        .project-img { width: 100%; border-radius: 8px; margin-bottom: 25px; border: 1px solid #475569; }
+        .tech-pill { background: #0f172a; color: var(--primary); padding: 4px 12px; border-radius: 20px; font-family: 'Fira Code', monospace; font-size: 0.8rem; margin-right: 10px; border: 1px solid var(--primary); }
+
+        @media (max-width: 768px) { .cv-grid { grid-template-columns: 1fr; } .cv-header h1 { font-size: 2rem; } }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a onclick="showPage('home')">INÍCIO</a>
-        <a onclick="showPage('sentinela')">SENTINELA</a>
-        <a onclick="showPage('wincaos')">WINCAOS</a>
-        <a onclick="showPage('space')">SPACE INVADERS</a>
-    </nav>
+<nav>
+    <a onclick="showPage('home')">Início</a>
+    <a onclick="showPage('sentinela')">Sentinela</a>
+    <a onclick="showPage('wincaos')">WinCaos</a>
+    <a onclick="showPage('space')">Space Invaders</a>
+</nav>
 
-    <div class="container">
+<div class="container">
 
-        <div id="home" class="page active">
-            <header>
-                <h1>FILIPE DANTAS CAPELASSO</h1>
-                <p style="margin-top: 10px;">Analista e Desenvolvedor de Sistemas [cite: 1, 7]</p>
-                <p style="font-size: 0.9rem; opacity: 0.8;">(68) 97400-5458 | dantasfilipe067@gmail.com | 19 anos [cite: 2]</p>
-                <a href="https://drive.google.com/uc?export=download&id=1DWuZKG7wny0ewVA2ef45bucUCyN-LTJu" class="btn-main">📄 BAIXAR PDF OFICIAL</a>
-            </header>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                <div class="project-card">
-                    <h2>Habilidades</h2>
-                    <p style="margin-top: 10px;">
-                        <span class="tech-tag">Python (Intermediário)</span>
-                        <span class="tech-tag">C# / .NET</span>
-                        <span class="tech-tag">Win32 API</span>
-                        <span class="tech-tag">CIS Controls 1-18</span> [cite: 17, 18, 19]
-                    </p>
-                </div>
-                <div class="project-card">
-                    <h2>Formação</h2>
-                    <p><strong>Estácio</strong> [cite: 8]</p>
-                    <p>Análise e Desenvolvimento de Sistemas (Cursando) [cite: 7, 8]</p>
-                </div>
-            </div>
+    <div id="home" class="page active">
+        <div class="cv-header">
+            <h1>FILIPE DANTAS CAPELASSO</h1>
+            <div class="subtitle">DESENVOLVEDOR DE SOFTWARE / SEGURANÇA DA INFORMAÇÃO, SUPORTE À EMPRESA E CLIENTES [cite: 25, 26]</div>
         </div>
 
-        <div id="sentinela" class="page">
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>Sentinela Automação 24hrs</h2>
-                </div>
-                <img src="https://raw.githubusercontent.com/FilipeCapelasso/FilipeCapelasso/main/sentinela_print.png" alt="Sentinela Interface" class="project-img" onerror="this.src='https://via.placeholder.com/800x400?text=Sua+Imagem+do+Sentinela+Aqui'">
-                <p>O Sentinela é uma central de comando para monitoramento de infraestrutura em larga escala. [cite: 41]</p>
-                <div style="margin-top: 20px;">
-                    <h3>Diferenciais</h3>
-                    <ul>
-                        <li>Interoperabilidade Total (Independente de linguagem). [cite: 42]</li>
-                        <li>Monitoramento hierárquico (País > Estado > Unidade).</li>
-                        <li>Motor Assíncrono (Multithreading) para alta performance. [cite: 52]</li>
+        <div class="download-bar">
+            <a href="https://drive.google.com/uc?export=download&id=1DWuZKG7wny0ewVA2ef45bucUCyN-LTJu" class="btn-dl">📄 BAIXAR CURRÍCULO EM PDF</a>
+        </div>
+
+        <div class="cv-grid">
+            <div>
+                <section class="cv-section">
+                    <h2>Resumo Profissional</h2>
+                    <p>Estudante de Análise e Desenvolvimento de Sistemas em busca de estágio ou primeiro emprego. Meu foco de atuação é em desenvolvimento de software e infraestrutura, suporte geral. Estou plenamente disponível para cargos de Assistente de Suporte Técnico / TI à empresa e clientes[cite: 27, 28, 29, 30].</p>
+                </section>
+
+                <section class="cv-section">
+                    <h2>Contato</h2>
+                    <p><strong>Telefone:</strong> (68) 97400-5458 [cite: 32]</p>
+                    <p><strong>E-mail:</strong> filipecapelasso1@gmail.com [cite: 33]</p>
+                    <p><strong>Endereço:</strong> Rua Tv. Isaías, 243, Belo Jardim [cite: 35]</p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/FilipeCapelasso" style="color: var(--primary);">github.com/FilipeCapelasso</a> [cite: 35]</p>
+                </section>
+
+                <section class="cv-section">
+                    <h2>Experiência Profissional</h2>
+                    <div class="info-group">
+                        <strong>Desenvolvedor Freelancer / Projetos Pessoais</strong>
+                        <p>Criação de aplicativos personalizados, levantamento de requisitos, arquitetura de software e suporte técnico[cite: 36, 37, 38, 39].</p>
+                    </div>
+                </section>
+            </div>
+
+            <div>
+                <section class="cv-section">
+                    <h2>Formação Acadêmica</h2>
+                    <p><strong>Universidade Estácio</strong> (Cursando | 2026) [cite: 49]</p>
+                    <p>Análise e Desenvolvimento de Sistemas [cite: 50]</p>
+                </section>
+
+                <section class="cv-section">
+                    <h2>Conhecimentos Técnicos</h2>
+                    <ul class="list-items">
+                        <li><strong>Tecnologias:</strong> .NET, Win32 API, Manipulação de Registro, Multithreading[cite: 52].</li>
+                        <li><strong>Linguagens:</strong> Python (Intermediário), JavaScript, C#, C/C++[cite: 53].</li>
+                        <li><strong>Segurança:</strong> Domínio dos Controles CIS 1 a 18 e Cibersegurança[cite: 54, 55].</li>
+                        <li><strong>Sistemas:</strong> Microsoft 365, Windows e Manutenção[cite: 56].</li>
                     </ul>
-                </div>
+                </section>
+
+                <section class="cv-section">
+                    <h2>Cursos Concluídos</h2>
+                    <ul class="list-items">
+                        <li>Domínio dos Controles CIS 1 a 18[cite: 58].</li>
+                        <li>Manutenção de Computadores e Dispositivos Móveis[cite: 59].</li>
+                        <li>Gerenciar Dados com Microsoft 365[cite: 60].</li>
+                        <li>Excel Intermediário e História da IA[cite: 62, 63].</li>
+                    </ul>
+                </section>
             </div>
         </div>
-
-        <div id="wincaos" class="page">
-            <div class="project-card">
-                <h2>WinCaos - Simulação de Sistema</h2>
-                <div class="warning-box">
-                    <strong>AVISO:</strong> Este software utiliza técnicas de simulação de falhas para fins educacionais de cibersegurança. [cite: 45]
-                </div>
-                <p>Exploração profunda da <strong>Win32 API</strong> e hooks de teclado de baixo nível. [cite: 44]</p>
-                <div style="margin: 20px 0;">
-                    <span class="tech-tag">C#</span> <span class="tech-tag">P/Invoke</span> <span class="tech-tag">Kernel32</span> [cite: 52, 53]
-                </div>
-                <h3>Kill-Switch de Emergência</h3>
-                <p>Mantenha pressionado <strong>CTRL + SHIFT + F12</strong> para encerrar os processos imediatamente.</p>
-            </div>
-        </div>
-
-        <div id="space" class="page">
-            <div class="project-card">
-                <h2>Invasores do Espaço</h2>
-                <p>Jogo de sobrevivência progressiva desenvolvido em Python com a biblioteca Pygame.</p>
-                <ul>
-                    <li>5 fases exclusivas com dificuldade crescente.</li>
-                    <li>Foco em sobrevivência por tempo e movimentação.</li>
-                </ul>
-                <div style="margin-top: 20px;">
-                    <span class="tech-tag">Python</span> <span class="tech-tag">Pygame</span> <span class="tech-tag">PyInstaller</span>
-                </div>
-            </div>
-        </div>
-
     </div>
 
-    <footer>
-        &copy; 2026 Filipe Dantas Capelasso | Analista e Desenvolvedor de Sistemas [cite: 1, 7]
-    </footer>
+    <div id="sentinela" class="page">
+        <div class="project-display">
+            <h2>Sentinela Automação 24hrs</h2>
+            <p style="margin: 15px 0; color: var(--muted);">Central de comando e monitoramento de infraestrutura em larga escala[cite: 40, 41].</p>
+            <img src="https://raw.githubusercontent.com/FilipeCapelasso/FilipeCapelasso/main/sentinela_print.png" alt="Interface Sentinela" class="project-img" onerror="this.src='https://via.placeholder.com/1000x500/1e293b/f1f5f9?text=Screenshot+Sentinela'">
+            <div style="margin-bottom: 20px;">
+                <span class="tech-pill">Multithreading</span><span class="tech-pill">Agnóstico</span><span class="tech-pill">API Telegram</span>
+            </div>
+            <h3>Objetivo e Diferenciais</h3>
+            <p>Concebido para ser o cérebro da empresa, garantindo soberania operacional através de monitoramento assíncrono e alertas inteligentes via Telegram[cite: 41, 42].</p>
+        </div>
+    </div>
 
-    <script>
-        function showPage(pageId) {
-            // Esconde todas as páginas
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            // Mostra a selecionada
-            document.getElementById(pageId).classList.add('active');
-            // Rola para o topo
-            window.scrollTo(0, 0);
-        }
-    </script>
+    <div id="wincaos" class="page">
+        <div class="project-display">
+            <h2>WinCaos - Simulação Educacional</h2>
+            <p style="margin: 15px 0; color: var(--warning);">Software experimental focado em Cibersegurança e Win32 API[cite: 43, 44].</p>
+            <img src="https://via.placeholder.com/1000x500/1e293b/f1f5f9?text=Simulação+WinCaos" class="project-img">
+            <div style="margin-bottom: 20px;">
+                <span class="tech-pill">C#</span><span class="tech-pill">Win32 API</span><span class="tech-pill">Low-Level Hooks</span>
+            </div>
+            <h3>Conceitos Aplicados</h3>
+            <p>Explora manipulação de cursor, hooks globais de teclado e persistência no registro para testar a resiliência do sistema operacional[cite: 44, 45].</p>
+        </div>
+    </div>
+
+    <div id="space" class="page">
+        <div class="project-display">
+            <h2>Invasores do Espaço</h2>
+            <p style="margin: 15px 0; color: var(--muted);">Jogo clássico desenvolvido em Python focado em progressão e sobrevivência.</p>
+            <img src="https://via.placeholder.com/1000x500/1e293b/f1f5f9?text=Gameplay+Space+Invaders" class="project-img">
+            <div style="margin-bottom: 20px;">
+                <span class="tech-pill">Python</span><span class="tech-pill">Pygame</span><span class="tech-pill">PyInstaller</span>
+            </div>
+            <p>Desenvolvido com 5 fases exclusivas onde o desafio aumenta conforme o tempo de sobrevivência exigido para avançar.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        window.scrollTo(0, 0);
+    }
+</script>
+
 </body>
 </html>
