@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filipe Dantas | Portfólio & Currículo</title>
+    <title>Filipe Dantas | Portfolio & Dev</title>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,16 +12,17 @@
             --card: #1e293b;
             --text: #f1f5f9;
             --accent: #10b981;
+            --warning: #ef4444;
             --muted: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         body { background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        /* Navegação */
+        /* Navegação Superior */
         nav {
             background: rgba(15, 23, 42, 0.95);
-            padding: 20px 0;
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -29,14 +30,14 @@
             border-bottom: 1px solid #334155;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 20px;
         }
 
         nav a {
             color: var(--text);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
             transition: 0.3s;
             cursor: pointer;
@@ -45,48 +46,34 @@
 
         nav a:hover { color: var(--primary); }
 
-        .container { max-width: 1100px; margin: 100px auto 50px; padding: 0 20px; }
+        .container { max-width: 1000px; margin: 80px auto 50px; padding: 0 20px; }
 
-        /* Controle de Páginas */
+        /* Sistema de Páginas */
         .page { display: none; animation: fadeIn 0.4s ease forwards; }
         .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Estilo Currículo (Home) */
-        .cv-header { text-align: left; border-bottom: 2px solid var(--primary); padding-bottom: 20px; margin-bottom: 30px; }
-        .cv-header h1 { font-size: 2.8rem; font-weight: 800; line-height: 1; }
-        .cv-header .subtitle { font-size: 1.1rem; color: var(--muted); margin-top: 10px; font-weight: 400; }
+        /* Estilo Currículo (Início) */
+        .cv-header { text-align: left; border-bottom: 2px solid var(--primary); padding: 40px 0; margin-bottom: 30px; }
+        .cv-header h1 { font-size: 2.5rem; font-weight: 800; }
+        .cv-header .subtitle { font-size: 1rem; color: var(--muted); text-transform: uppercase; margin-top: 5px; }
 
-        .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .cv-section { margin-bottom: 30px; }
-        .cv-section h2 { 
-            font-size: 1.2rem; 
-            color: var(--text); 
-            text-transform: uppercase; 
-            margin-bottom: 15px; 
-            border-bottom: 1px solid #334155;
-            padding-bottom: 5px;
-        }
-
-        .info-group { margin-bottom: 15px; }
-        .info-group strong { color: var(--accent); display: block; margin-bottom: 5px; }
-
-        /* Listas de Habilidades e Cursos */
-        .list-items { list-style: none; }
-        .list-items li { margin-bottom: 8px; position: relative; padding-left: 15px; }
-        .list-items li::before { content: "•"; position: absolute; left: 0; color: var(--primary); }
-
-        /* Botão Download */
-        .download-bar { background: #1e3a8a; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 30px; }
-        .btn-dl { background: var(--accent); color: white; padding: 10px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .btn-dl:hover { background: #059669; }
-
+        .cv-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; }
+        .section-title { font-size: 1.1rem; color: var(--accent); text-transform: uppercase; border-bottom: 1px solid #334155; margin-bottom: 15px; padding-bottom: 5px; }
+        
         /* Estilo Projetos */
-        .project-display { background: var(--card); border-radius: 12px; padding: 40px; border: 1px solid #334155; }
-        .project-img { width: 100%; border-radius: 8px; margin-bottom: 25px; border: 1px solid #475569; }
-        .tech-pill { background: #0f172a; color: var(--primary); padding: 4px 12px; border-radius: 20px; font-family: 'Fira Code', monospace; font-size: 0.8rem; margin-right: 10px; border: 1px solid var(--primary); }
+        .project-card { background: var(--card); border-radius: 12px; padding: 35px; border: 1px solid #334155; margin-bottom: 20px; }
+        .project-img { width: 100%; border-radius: 8px; margin: 20px 0; border: 1px solid #475569; }
+        .tech-tag { background: #0f172a; color: var(--primary); padding: 3px 10px; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.75rem; border: 1px solid var(--primary); margin-right: 5px; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
+        th { background: #1e3a8a; }
 
-        @media (max-width: 768px) { .cv-grid { grid-template-columns: 1fr; } .cv-header h1 { font-size: 2rem; } }
+        .warning-box { background: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--warning); padding: 15px; margin: 20px 0; font-size: 0.9rem; }
+        .btn-dl { display: inline-block; background: var(--accent); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px; }
+
+        @media (max-width: 768px) { .cv-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -103,102 +90,119 @@
     <div id="home" class="page active">
         <div class="cv-header">
             <h1>FILIPE DANTAS CAPELASSO</h1>
-            <div class="subtitle">DESENVOLVEDOR DE SOFTWARE / SEGURANÇA DA INFORMAÇÃO, SUPORTE À EMPRESA E CLIENTES [cite: 25, 26]</div>
-        </div>
-
-        <div class="download-bar">
-            <a href="https://drive.google.com/uc?export=download&id=1DWuZKG7wny0ewVA2ef45bucUCyN-LTJu" class="btn-dl">📄 BAIXAR CURRÍCULO EM PDF</a>
+            <div class="subtitle">Desenvolvedor de Software / Segurança da Informação, Suporte à Empresa e Clientes</div>
         </div>
 
         <div class="cv-grid">
-            <div>
-                <section class="cv-section">
-                    <h2>Resumo Profissional</h2>
-                    <p>Estudante de Análise e Desenvolvimento de Sistemas em busca de estágio ou primeiro emprego. Meu foco de atuação é em desenvolvimento de software e infraestrutura, suporte geral. Estou plenamente disponível para cargos de Assistente de Suporte Técnico / TI à empresa e clientes[cite: 27, 28, 29, 30].</p>
-                </section>
+            <div class="left-col">
+                <div class="cv-section">
+                    <h2 class="section-title">Resumo Profissional</h2>
+                    <p>Estudante de Análise e Desenvolvimento de Sistemas em busca de estágio ou primeiro emprego[cite: 88, 91]. Foco em desenvolvimento de software e infraestrutura, suporte geral[cite: 92]. Disponível para cargos de Assistente de Suporte Técnico / TI, estagiário em ADS e outros no setor tecnológico[cite: 93].</p>
+                </div>
 
-                <section class="cv-section">
-                    <h2>Contato</h2>
-                    <p><strong>Telefone:</strong> (68) 97400-5458 [cite: 32]</p>
-                    <p><strong>E-mail:</strong> filipecapelasso1@gmail.com [cite: 33]</p>
-                    <p><strong>Endereço:</strong> Rua Tv. Isaías, 243, Belo Jardim [cite: 35]</p>
-                    <p><strong>GitHub:</strong> <a href="https://github.com/FilipeCapelasso" style="color: var(--primary);">github.com/FilipeCapelasso</a> [cite: 35]</p>
-                </section>
-
-                <section class="cv-section">
-                    <h2>Experiência Profissional</h2>
-                    <div class="info-group">
-                        <strong>Desenvolvedor Freelancer / Projetos Pessoais</strong>
-                        <p>Criação de aplicativos personalizados, levantamento de requisitos, arquitetura de software e suporte técnico[cite: 36, 37, 38, 39].</p>
-                    </div>
-                </section>
+                <div class="cv-section" style="margin-top: 30px;">
+                    <h2 class="section-title">Experiência Profissional</h2>
+                    <p><strong>Desenvolvedor Freelancer / Projetos Pessoais</strong> [cite: 99]</p>
+                    <ul style="margin-left: 20px; font-size: 0.95rem;">
+                        <li>Criação de aplicativos personalizados para clientes[cite: 100].</li>
+                        <li>Levantamento de requisitos e arquitetura de lógica em múltiplas linguagens[cite: 101].</li>
+                        <li>Suporte técnico e manutenção contínua das ferramentas desenvolvidas[cite: 102].</li>
+                        <li>Desenvolvedor de Projetos de TI (Freelancer 2025): Sistema de vendas online e automação de pagamentos[cite: 109, 110].</li>
+                    </ul>
+                </div>
             </div>
 
-            <div>
-                <section class="cv-section">
-                    <h2>Formação Acadêmica</h2>
-                    <p><strong>Universidade Estácio</strong> (Cursando | 2026) [cite: 49]</p>
-                    <p>Análise e Desenvolvimento de Sistemas [cite: 50]</p>
-                </section>
+            <div class="right-col">
+                <div class="cv-section">
+                    <h2 class="section-title">Contato</h2>
+                    <p>📞 (68) 97400-5458 [cite: 95]</p>
+                    <p>📧 filipecapelasso1@gmail.com [cite: 96]</p>
+                    <p>📍 Belo Jardim, Acre [cite: 98]</p>
+                    <a href="https://drive.google.com/uc?export=download&id=1DWuZKG7wny0ewVA2ef45bucUCyN-LTJu" class="btn-dl">📄 Baixar PDF Oficial</a>
+                </div>
 
-                <section class="cv-section">
-                    <h2>Conhecimentos Técnicos</h2>
-                    <ul class="list-items">
-                        <li><strong>Tecnologias:</strong> .NET, Win32 API, Manipulação de Registro, Multithreading[cite: 52].</li>
-                        <li><strong>Linguagens:</strong> Python (Intermediário), JavaScript, C#, C/C++[cite: 53].</li>
-                        <li><strong>Segurança:</strong> Domínio dos Controles CIS 1 a 18 e Cibersegurança[cite: 54, 55].</li>
-                        <li><strong>Sistemas:</strong> Microsoft 365, Windows e Manutenção[cite: 56].</li>
-                    </ul>
-                </section>
-
-                <section class="cv-section">
-                    <h2>Cursos Concluídos</h2>
-                    <ul class="list-items">
-                        <li>Domínio dos Controles CIS 1 a 18[cite: 58].</li>
-                        <li>Manutenção de Computadores e Dispositivos Móveis[cite: 59].</li>
-                        <li>Gerenciar Dados com Microsoft 365[cite: 60].</li>
-                        <li>Excel Intermediário e História da IA[cite: 62, 63].</li>
-                    </ul>
-                </section>
+                <div class="cv-section" style="margin-top: 30px;">
+                    <h2 class="section-title">Habilidades Técnicas</h2>
+                    <p><strong>Linguagens:</strong> Python, C#, JavaScript, C/C++[cite: 116].</p>
+                    <p><strong>Tecnologias:</strong> .NET, Win32 API, Multithreading, Shell Integration[cite: 115].</p>
+                    <p><strong>Cursos:</strong> CIS Controls 1-18, Microsoft 365, Excel Intermediário, História da IA[cite: 121, 123, 125, 126].</p>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="sentinela" class="page">
-        <div class="project-display">
-            <h2>Sentinela Automação 24hrs</h2>
-            <p style="margin: 15px 0; color: var(--muted);">Central de comando e monitoramento de infraestrutura em larga escala[cite: 40, 41].</p>
-            <img src="https://raw.githubusercontent.com/FilipeCapelasso/FilipeCapelasso/main/sentinela_print.png" alt="Interface Sentinela" class="project-img" onerror="this.src='https://via.placeholder.com/1000x500/1e293b/f1f5f9?text=Screenshot+Sentinela'">
-            <div style="margin-bottom: 20px;">
-                <span class="tech-pill">Multithreading</span><span class="tech-pill">Agnóstico</span><span class="tech-pill">API Telegram</span>
-            </div>
-            <h3>Objetivo e Diferenciais</h3>
-            <p>Concebido para ser o cérebro da empresa, garantindo soberania operacional através de monitoramento assíncrono e alertas inteligentes via Telegram[cite: 41, 42].</p>
+        <div class="project-card">
+            <h1>Sentinela Automação 24hrs</h1>
+            <p>Central de comando e monitoramento de infraestrutura em larga escala[cite: 103, 104].</p>
+            
+            <img src="https://raw.githubusercontent.com/FilipeCapelasso/FilipeCapelasso/main/sentinela_print.png" class="project-img" onerror="this.src='https://via.placeholder.com/1000x500/1e293b/f1f5f9?text=Screenshot+Sentinela'">
+            
+            <h3>Objetivo Principal</h3>
+            <p>Foco na <strong>soberania operacional</strong>. O sistema monitora toda a malha tecnológica através de uma interface de baixa latência e integração profunda[cite: 105].</p>
+
+            <h3 style="margin-top: 20px;">Funcionalidades Principais</h3>
+            <table>
+                <thead>
+                    <tr><th>Função</th><th>Descrição</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Painel de Controle</td><td>Interface gráfica avançada para supervisão 24/7.</td></tr>
+                    <tr><td>Alertas Inteligentes</td><td>Integração via API do Telegram com diagnósticos técnicos.</td></tr>
+                    <tr><td>Intervenção Remota</td><td>Botões de ação nas notificações para reativação de sistemas.</td></tr>
+                    <tr><td>Autossuficiência</td><td>Motor interno que gerencia dependências e banco JSON.</td></tr>
+                    <tr><td>Motor Assíncrono</td><td>Multithreading para processar milhares de unidades sem travar.</td></tr>
+                </tbody>
+            </table>
+
+            <h3 style="margin-top: 20px;">Resiliência e Segurança</h3>
+            <p>O monitoramento utiliza um <strong>Motor Assíncrono</strong>. Em caso de queda de APIs, o sistema utiliza cache local para manter a operação ativa.</p>
+            <p style="font-size: 0.8rem; color: var(--muted); margin-top: 10px;">* Nota: Token em código apenas para teste; recomendado uso de .env.</p>
         </div>
     </div>
 
     <div id="wincaos" class="page">
-        <div class="project-display">
-            <h2>WinCaos - Simulação Educacional</h2>
-            <p style="margin: 15px 0; color: var(--warning);">Software experimental focado em Cibersegurança e Win32 API[cite: 43, 44].</p>
-            <img src="https://via.placeholder.com/1000x500/1e293b/f1f5f9?text=Simulação+WinCaos" class="project-img">
-            <div style="margin-bottom: 20px;">
-                <span class="tech-pill">C#</span><span class="tech-pill">Win32 API</span><span class="tech-pill">Low-Level Hooks</span>
+        <div class="project-card">
+            <h1>WinCaos - Simulação Educacional</h1>
+            <p>Aplicação experimental em C# focada em Win32 API e Cibersegurança[cite: 106, 107].</p>
+            
+            <div class="warning-box">
+                <strong>AVISO DE SEGURANÇA:</strong> Não é um vírus real, mas utiliza técnicas de malware (pranks) para aprendizado técnico. Execute apenas em Máquinas Virtuais.
             </div>
-            <h3>Conceitos Aplicados</h3>
-            <p>Explora manipulação de cursor, hooks globais de teclado e persistência no registro para testar a resiliência do sistema operacional[cite: 44, 45].</p>
+
+            <h3 style="margin-top: 20px;">Tecnologias e Conceitos</h3>
+            <ul style="margin-left: 20px;">
+                <li><strong>P/Invoke & Win32 API:</strong> Manipulação de cursor e trilhas via user32.dll.</li>
+                <li><strong>Low-Level Keyboard Hooks:</strong> Filtragem de teclas (Alt+Tab, WinKey) via SetWindowsHookEx.</li>
+                <li><strong>Registry Manipulation:</strong> Persistência local em CurrentVersion\Run.</li>
+                <li><strong>Multithreading:</strong> Gerenciamento em modo STA para criação recursiva de janelas.</li>
+            </ul>
+
+            <h3 style="margin-top: 20px; color: var(--warning);">KILL-SWITCH DE EMERGÊNCIA</h3>
+            <p>Para encerrar: Mantenha <strong>CTRL + SHIFT</strong> e pressione <strong>F12</strong>. Isso restaura a velocidade do mouse e libera os hooks do teclado.</p>
         </div>
     </div>
 
     <div id="space" class="page">
-        <div class="project-display">
-            <h2>Invasores do Espaço</h2>
-            <p style="margin: 15px 0; color: var(--muted);">Jogo clássico desenvolvido em Python focado em progressão e sobrevivência.</p>
+        <div class="project-card">
+            <h1>Invasores do Espaço</h1>
+            <p>Jogo de tiro espacial clássico desenvolvido em Python.</p>
+            
             <img src="https://via.placeholder.com/1000x500/1e293b/f1f5f9?text=Gameplay+Space+Invaders" class="project-img">
+
             <div style="margin-bottom: 20px;">
-                <span class="tech-pill">Python</span><span class="tech-pill">Pygame</span><span class="tech-pill">PyInstaller</span>
+                <span class="tech-tag">Python</span><span class="tech-tag">Pygame</span><span class="tech-tag">PyInstaller</span>
             </div>
-            <p>Desenvolvido com 5 fases exclusivas onde o desafio aumenta conforme o tempo de sobrevivência exigido para avançar.</p>
+
+            <h3>Sobre o Jogo</h3>
+            <p>Projeto focado em jogabilidade progressiva com <strong>5 fases exclusivas</strong>. Para avançar, o piloto deve sobreviver ao tempo exigido em cada nível.</p>
+
+            <h3 style="margin-top: 20px;">Como Jogar</h3>
+            <p>• Setas ou A/D para mover | Espaço para atirar.</p>
+            <p>• Sobreviva até o cronômetro zerar para avançar.</p>
+
+            <h3 style="margin-top: 20px;">Como Rodar</h3>
+            <code style="display: block; background: #000; padding: 10px; border-radius: 5px;">pip install pygame</code>
         </div>
     </div>
 
