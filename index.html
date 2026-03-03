@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filipe Dantas Capelasso | Desenvolvedor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #2563eb;
+    --bg: #0f172a;
+    --card: #111827;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #10b981;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: var(--text);
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    padding: 60px 40px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-weight: 400;
+    color: #dbeafe;
+}
+
+.contact {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.download-area {
+    text-align: center;
+    padding: 30px;
+    background: #0b1220;
+}
+
+.btn-download {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-download:hover {
+    background: #059669;
+    transform: scale(1.05);
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    padding: 50px;
+}
+
+.section {
+    margin-bottom: 35px;
+}
+
+.section h2 {
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: var(--accent);
+    border-left: 4px solid var(--accent);
+    padding-left: 10px;
+}
+
+.skills span {
+    display: inline-block;
+    background: #1f2937;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 5px 5px 0 0;
+    font-size: 0.85rem;
+    border: 1px solid #374151;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid #1f2937;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>FILIPE DANTAS CAPELASSO</h1>
+    <div class="subtitle">Analista e Desenvolvedor de Sistemas</div>
+    <div class="contact">
+        (68) 97400-5458 • dantasfilipe067@gmail.com • 19 anos
+    </div>
+</header>
+
+<div class="download-area">
+    <a class="btn-download"
+       href="https://drive.google.com/uc?export=download&id=1DWuZKG7wny0ewVA2ef45bucUCyN-LTJu"
+       download>
+       📄 Baixar Currículo em PDF
+    </a>
+</div>
+
+<div class="content">
+
+    <!-- COLUNA ESQUERDA -->
+    <div>
+
+        <div class="section">
+            <h2>Formação</h2>
+            <p><strong>Análise e Desenvolvimento de Sistemas</strong><br>
+            Estácio • Cursando</p>
+        </div>
+
+        <div class="section">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills">
+                <span>Python (Intermediário)</span>
+                <span>C# / .NET</span>
+                <span>JavaScript</span>
+                <span>Win32 API</span>
+                <span>Multithreading</span>
+                <span>CIS Controls 1-18</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- COLUNA DIREITA -->
+    <div>
+
+        <div class="section">
+            <h2>Objetivo</h2>
+            <p>
+                Estudante de Análise e Desenvolvimento de Sistemas,
+                buscando oportunidade de estágio ou posição júnior
+                na área de desenvolvimento de software. Interesse em
+                soluções eficientes, segurança da informação e
+                aprimoramento contínuo de habilidades técnicas.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Perfil Profissional</h2>
+            <p>
+                Jovem profissional com forte interesse em tecnologia,
+                desenvolvimento de sistemas e boas práticas de segurança.
+                Experiência prática com projetos acadêmicos e pessoais,
+                utilizando C#, Python e JavaScript. Comprometido com
+                aprendizado constante e evolução técnica.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    © 2026 Filipe Dantas Capelasso • Hospedado no GitHub Pages
+</div>
+
+</div>
+
+</body>
+</html>
