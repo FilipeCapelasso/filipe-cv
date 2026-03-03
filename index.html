@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filipe Dantas | Portfólio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #3b82f6; --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --accent: #10b981; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        
+        .container { max-width: 850px; margin: 40px auto; background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        
+        header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); padding: 50px 20px; text-align: center; }
+        h1 { font-size: 2.2rem; letter-spacing: 1px; margin-bottom: 10px; }
+        .tagline { font-family: 'Fira Code', monospace; color: #bfdbfe; font-size: 1.1rem; }
+
+        .main-content { padding: 40px; }
+        
+        .btn-download { 
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--accent); color: white; padding: 15px 30px; 
+            border-radius: 8px; font-weight: bold; cursor: pointer; border: none;
+            transition: 0.3s; margin-bottom: 30px; text-decoration: none;
+        }
+        .btn-download:hover { background: #059669; transform: scale(1.02); }
+
+        section { margin-bottom: 30px; }
+        h2 { color: var(--accent); font-size: 1.3rem; margin-bottom: 15px; border-left: 4px solid var(--accent); padding-left: 15px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+        .skill-tag { background: #334155; padding: 10px; border-radius: 6px; text-align: center; font-size: 0.85rem; border: 1px solid #475569; }
+
+        footer { text-align: center; padding: 30px; color: #94a3b8; font-size: 0.8rem; border-top: 1px solid #334155; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="resume">
+    <header>
+        <h1>FILIPE DANTAS CAPELASSO </h1>
+        <p class="tagline">> Analista e Desenvolvedor de Sistemas_</p>
+        <p style="margin-top: 15px; opacity: 0.9;">(68) 97400-5458 | dantasfilipe067@gmail.com | 19 anos [cite: 2]</p>
+    </header>
+
+    <div class="main-content">
+        <center>
+            <button class="btn-download" onclick="exportarPDF()">📥 BAIXAR CURRÍCULO (PDF)</button>
+        </center>
+
+        <section>
+            <h2>OBJETIVO [cite: 3]</h2>
+            <p>Estudante de ADS na Estácio em busca de estágio ou primeiro emprego, focado em desenvolvimento de software e cibersegurança. [cite: 4, 5, 8]</p>
+        </section>
+
+        <section>
+            <h2>HABILIDADES TÉCNICAS [cite: 16]</h2>
+            <div class="grid">
+                <div class="skill-tag">Python (Intermediário) [cite: 17]</div>
+                <div class="skill-tag">C# / .NET [cite: 17, 18]</div>
+                <div class="skill-tag">Win32 API [cite: 18]</div>
+                <div class="skill-tag">CIS Controls 1-18 [cite: 19]</div>
+                <div class="skill-tag">JavaScript [cite: 17]</div>
+                <div class="skill-tag">Multithreading [cite: 18]</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>FORMAÇÃO [cite: 6]</h2>
+            <p><strong>Análise e Desenvolvimento de Sistemas [cite: 7]</strong><br>Estácio | Cursando [cite: 8]</p>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 Filipe Dantas - Hospedado no GitHub Pages
+    </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+    function exportarPDF() {
+        const element = document.getElementById('resume');
+        const btn = document.querySelector('.btn-download');
+        btn.style.display = 'none';
+
+        const opt = {
+            margin: 0,
+            filename: 'CV_Filipe_Capelasso.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, backgroundColor: '#0f172a' },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        html2pdf().set(opt).from(element).save().then(() => {
+            btn.style.display = 'inline-flex';
+        });
+    }
+</script>
+
+</body>
+</html>
