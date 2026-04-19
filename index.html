@@ -104,33 +104,6 @@
             }
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(0, 186, 199, 0.28);
-            }
-            70% {
-                box-shadow: 0 0 0 14px rgba(0, 186, 199, 0);
-            }
-        }
-
-        @keyframes sweep {
-            from {
-                transform: translateX(-120%);
-            }
-            to {
-                transform: translateX(120%);
-            }
-        }
-
-        @keyframes blink {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.25;
-            }
-        }
-
         a {
             color: inherit;
             text-decoration: none;
@@ -329,14 +302,13 @@
 
         .hero {
             display: grid;
-            grid-template-columns: minmax(0, 1.18fr) minmax(320px, 430px);
+            grid-template-columns: minmax(0, 1fr);
             gap: 22px;
             padding: 70px 0 22px;
             align-items: start;
         }
 
         .hero-copy,
-        .assistant-card,
         .panel,
         .capability-card,
         .project-card,
@@ -348,6 +320,7 @@
         .hero-copy {
             display: grid;
             gap: 28px;
+            max-width: 980px;
         }
 
         .eyebrow {
@@ -525,199 +498,12 @@
             letter-spacing: -0.04em;
         }
 
-        .assistant-card {
-            padding: 24px;
-            border-radius: var(--radius-xl);
-            background:
-                radial-gradient(circle at top right, rgba(0, 186, 199, 0.20), transparent 30%),
-                linear-gradient(180deg, var(--surface-dark) 0%, var(--surface-dark-2) 100%);
-            color: #edf6ff;
-            border: 1px solid rgba(255, 255, 255, 0.10);
-            box-shadow: 0 30px 90px rgba(7, 12, 20, 0.30);
-        }
-
-        .assistant-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                120deg,
-                transparent 0%,
-                rgba(255, 255, 255, 0.06) 50%,
-                transparent 100%
-            );
-            transform: translateX(-120%);
-            animation: sweep 8s linear infinite;
-            pointer-events: none;
-        }
-
-        .assistant-head {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 18px;
-        }
-
-        .assistant-title {
-            display: grid;
-            gap: 6px;
-        }
-
         .assistant-label {
             font-family: "IBM Plex Mono", monospace;
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.14em;
-            color: rgba(237, 246, 255, 0.62);
-        }
-
-        .assistant-name {
-            font-size: 1.15rem;
-            font-weight: 700;
-        }
-
-        .assistant-live {
-            display: inline-flex;
-            align-items: center;
-            gap: 9px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.10);
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.74rem;
-            color: rgba(237, 246, 255, 0.84);
-        }
-
-        .assistant-live::before {
-            content: "";
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #59f7d2;
-            animation: blink 1.4s infinite;
-        }
-
-        .assistant-terminal {
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.10);
-            background: rgba(4, 10, 18, 0.42);
-            padding: 18px;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        }
-
-        .terminal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 14px;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.76rem;
-            color: rgba(237, 246, 255, 0.60);
-        }
-
-        .terminal-dots {
-            display: inline-flex;
-            gap: 6px;
-        }
-
-        .terminal-dots span {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.20);
-        }
-
-        .terminal-dots span:first-child {
-            background: #ff6256;
-        }
-
-        .terminal-dots span:nth-child(2) {
-            background: #ffbe2f;
-        }
-
-        .terminal-dots span:nth-child(3) {
-            background: #2ad05d;
-        }
-
-        .terminal-feed {
-            display: grid;
-            gap: 10px;
-            min-height: 174px;
-            font-family: "IBM Plex Mono", monospace;
-            font-size: 0.84rem;
-        }
-
-        .terminal-line {
-            color: rgba(237, 246, 255, 0.76);
-        }
-
-        .terminal-line::before {
-            content: ">";
-            margin-right: 10px;
-            color: var(--accent);
-        }
-
-        .assistant-output {
-            margin-top: 18px;
-            padding: 16px 18px;
-            border-radius: 22px;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .assistant-output h3 {
-            margin-bottom: 10px;
-            font-size: 0.94rem;
-            font-weight: 700;
-        }
-
-        .typewriter {
-            min-height: 104px;
-            line-height: 1.8;
-            color: rgba(237, 246, 255, 0.84);
-        }
-
-        .typewriter::after {
-            content: "_";
-            margin-left: 3px;
-            color: var(--accent);
-            animation: blink 1s infinite;
-        }
-
-        .insight-list {
-            display: grid;
-            gap: 12px;
-            margin-top: 18px;
-        }
-
-        .insight-card {
-            padding: 14px 16px;
-            border-radius: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-        }
-
-        .insight-card.is-active {
-            transform: translateX(6px);
-            border-color: rgba(0, 186, 199, 0.42);
-            background: rgba(0, 186, 199, 0.12);
-        }
-
-        .insight-title {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 0.95rem;
-            font-weight: 700;
-        }
-
-        .insight-text {
-            color: rgba(237, 246, 255, 0.72);
-            line-height: 1.65;
-            font-size: 0.92rem;
+            color: rgba(35, 51, 73, 0.7);
         }
 
         .section {
@@ -1352,10 +1138,6 @@
                 align-items: start;
             }
 
-            .assistant-live {
-                width: fit-content;
-            }
-
             .contact-actions {
                 flex-direction: column;
             }
@@ -1464,36 +1246,6 @@
                     <div class="stats-grid" id="statsGrid"></div>
                 </div>
 
-                <aside class="assistant-card reveal" aria-label="Painel de leitura automatica do curriculo">
-                    <div class="assistant-head">
-                        <div class="assistant-title">
-                            <span class="assistant-label">IA de recrutamento</span>
-                            <strong class="assistant-name">Hiring Copilot • Filipe v1.0</strong>
-                        </div>
-                        <div class="assistant-live">
-                            <span id="clockText">Rio Branco • --:--</span>
-                        </div>
-                    </div>
-
-                    <div class="assistant-terminal">
-                        <div class="terminal-header">
-                            <div class="terminal-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <span>scan://resume.profile</span>
-                        </div>
-                        <div class="terminal-feed" id="terminalFeed"></div>
-                    </div>
-
-                    <div class="assistant-output">
-                        <h3>Leitura automatica do perfil</h3>
-                        <p class="typewriter" id="typewriterText"></p>
-                    </div>
-
-                    <div class="insight-list" id="insightList"></div>
-                </aside>
             </section>
 
             <section id="perfil" class="section">
@@ -1785,38 +1537,6 @@
                     tags: ["C#", "Win32 API", "Analise de comportamento"]
                 }
             ],
-            insights: [
-                {
-                    title: "Leitura #1",
-                    text: "Perfil com cruzamento raro entre suporte, infraestrutura e curiosidade por desenvolvimento."
-                },
-                {
-                    title: "Leitura #2",
-                    text: "Projetos autorais fortalecem a narrativa de iniciativa e aprendizado pratico."
-                },
-                {
-                    title: "Leitura #3",
-                    text: "Disponibilidade para viagens e plantoes amplia versatilidade para operacoes reais."
-                },
-                {
-                    title: "Leitura #4",
-                    text: "Boa aderencia para vagas de entrada em TI com espaco para crescimento rapido."
-                }
-            ],
-            terminalLines: [
-                "boot::perfil_filipe online",
-                "scan::stack -> suporte | infraestrutura | automacao",
-                "sync::education -> ADS em andamento | marco 2026",
-                "check::mobility -> viagens e deslocamentos liberados",
-                "load::projects -> 4 projetos relevantes encontrados",
-                "status::aberto para estagio, junior e freelance"
-            ],
-            typewriterPhrases: [
-                "Candidato em formacao com pegada pratica e repertorio para entrar em operacao rapidamente.",
-                "Perfil que combina estudo formal, iniciativa autoral e disponibilidade real para o trabalho tecnico.",
-                "Boa leitura para vagas que pedem suporte, infraestrutura, disciplina operacional e vontade de crescer.",
-                "Projeto de carreira com potencial de evolucao forte quando exposto a rotina, mentoria e desafios reais."
-            ],
             contactStatus:
                 "Disponivel para processos seletivos, networking profissional, oportunidades de estagio, posicoes junior e projetos sob demanda. O site foi desenhado para dar impressao de sistema ativo: sempre pronto para apresentar stack, objetivos e historico de execucao.",
             contactItems: [
@@ -2007,20 +1727,6 @@
                 .join("");
         }
 
-        function renderInsights() {
-            const container = document.getElementById("insightList");
-            container.innerHTML = resumeData.insights
-                .map(
-                    (item, index) => `
-                        <article class="insight-card ${index === 0 ? "is-active" : ""}">
-                            <strong class="insight-title">${item.title}</strong>
-                            <p class="insight-text">${item.text}</p>
-                        </article>
-                    `
-                )
-                .join("");
-        }
-
         function renderContacts() {
             const container = document.getElementById("contactGrid");
             container.innerHTML = resumeData.contactItems
@@ -2129,92 +1835,6 @@
             bars.forEach((bar) => observer.observe(bar));
         }
 
-        function runTypewriter() {
-            const element = document.getElementById("typewriterText");
-            const phrases = resumeData.typewriterPhrases;
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let deleting = false;
-
-            function step() {
-                const currentPhrase = phrases[phraseIndex];
-                if (!deleting) {
-                    charIndex += 1;
-                    element.textContent = currentPhrase.slice(0, charIndex);
-                    if (charIndex === currentPhrase.length) {
-                        deleting = true;
-                        setTimeout(step, 1900);
-                        return;
-                    }
-                    setTimeout(step, 28);
-                    return;
-                }
-
-                charIndex -= 1;
-                element.textContent = currentPhrase.slice(0, charIndex);
-                if (charIndex === 0) {
-                    deleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
-                    setTimeout(step, 340);
-                    return;
-                }
-                setTimeout(step, 18);
-            }
-
-            step();
-        }
-
-        function runTerminalFeed() {
-            const feed = document.getElementById("terminalFeed");
-            const lines = resumeData.terminalLines;
-            let index = 0;
-
-            function pushLine() {
-                const line = document.createElement("div");
-                line.className = "terminal-line";
-                line.textContent = lines[index];
-                feed.appendChild(line);
-
-                if (feed.children.length > 6) {
-                    feed.removeChild(feed.firstElementChild);
-                }
-
-                index = (index + 1) % lines.length;
-                setTimeout(pushLine, 1150);
-            }
-
-            pushLine();
-        }
-
-        function rotateInsightCards() {
-            const cards = Array.from(document.querySelectorAll(".insight-card"));
-            if (!cards.length) return;
-
-            let activeIndex = 0;
-            setInterval(() => {
-                cards.forEach((card, index) => {
-                    card.classList.toggle("is-active", index === activeIndex);
-                });
-                activeIndex = (activeIndex + 1) % cards.length;
-            }, 2500);
-        }
-
-        function updateClock() {
-            const element = document.getElementById("clockText");
-
-            function render() {
-                const now = new Date();
-                const time = new Intl.DateTimeFormat("pt-BR", {
-                    hour: "2-digit",
-                    minute: "2-digit"
-                }).format(now);
-                element.textContent = `Rio Branco • ${time}`;
-            }
-
-            render();
-            setInterval(render, 30000);
-        }
-
         function setupQuickJumps() {
             document.querySelectorAll("[data-jump]").forEach((button) => {
                 button.addEventListener("click", () => {
@@ -2292,16 +1912,11 @@
             renderFocus();
             renderExtras();
             renderProjects();
-            renderInsights();
             renderContacts();
 
             animateCounters();
             revealOnScroll();
             animateFocusBars();
-            runTypewriter();
-            runTerminalFeed();
-            rotateInsightCards();
-            updateClock();
             setupQuickJumps();
             setupScrollSpy();
             setupScrollProgress();
