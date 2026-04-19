@@ -281,25 +281,6 @@
             flex-shrink: 0;
         }
 
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: rgba(15, 23, 38, 0.05);
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
-
-        .status-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent);
-            animation: pulse 2.2s infinite;
-        }
-
         .btn,
         .chip-button {
             border: 0;
@@ -1371,8 +1352,7 @@
                 align-items: start;
             }
 
-            .assistant-live,
-            .status-pill {
+            .assistant-live {
                 width: fit-content;
             }
 
@@ -1426,10 +1406,6 @@
             </nav>
 
             <div class="top-actions">
-                <div class="status-pill">
-                    <span class="status-dot"></span>
-                    <span id="statusText">Portfolio em modo vivo</span>
-                </div>
                 <a
                     class="btn btn-ghost"
                     id="downloadCvButton"
@@ -1841,10 +1817,6 @@
                 "Boa leitura para vagas que pedem suporte, infraestrutura, disciplina operacional e vontade de crescer.",
                 "Projeto de carreira com potencial de evolucao forte quando exposto a rotina, mentoria e desafios reais."
             ],
-            statusPhrases: [
-                "Portfolio em modo vivo",
-                "Perfil pronto para abordagem"
-            ],
             contactStatus:
                 "Disponivel para processos seletivos, networking profissional, oportunidades de estagio, posicoes junior e projetos sob demanda. O site foi desenhado para dar impressao de sistema ativo: sempre pronto para apresentar stack, objetivos e historico de execucao.",
             contactItems: [
@@ -2227,15 +2199,6 @@
             }, 2500);
         }
 
-        function rotateStatusText() {
-            const element = document.getElementById("statusText");
-            let index = 0;
-            setInterval(() => {
-                index = (index + 1) % resumeData.statusPhrases.length;
-                element.textContent = resumeData.statusPhrases[index];
-            }, 3200);
-        }
-
         function updateClock() {
             const element = document.getElementById("clockText");
 
@@ -2338,7 +2301,6 @@
             runTypewriter();
             runTerminalFeed();
             rotateInsightCards();
-            rotateStatusText();
             updateClock();
             setupQuickJumps();
             setupScrollSpy();
