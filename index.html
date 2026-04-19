@@ -1,220 +1,289 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filipe Dantas | Portfolio & Dev</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #f1f5f9;
-            --accent: #10b981;
-            --warning: #ef4444;
-            --muted: #94a3b8;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); color: var(--text); line-height: 1.6; }
-
-        /* Navegação Superior */
-        nav {
-            background: rgba(15, 23, 42, 0.95);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #334155;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        nav a:hover { color: var(--primary); }
-
-        .container { max-width: 1000px; margin: 80px auto 50px; padding: 0 20px; }
-
-        /* Sistema de Páginas */
-        .page { display: none; animation: fadeIn 0.4s ease forwards; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Estilo Currículo (Início) */
-        .cv-header { text-align: left; border-bottom: 2px solid var(--primary); padding: 40px 0; margin-bottom: 30px; }
-        .cv-header h1 { font-size: 2.5rem; font-weight: 800; }
-        .cv-header .subtitle { font-size: 1rem; color: var(--muted); text-transform: uppercase; margin-top: 5px; }
-
-        .cv-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; }
-        .section-title { font-size: 1.1rem; color: var(--accent); text-transform: uppercase; border-bottom: 1px solid #334155; margin-bottom: 15px; padding-bottom: 5px; }
-        
-        /* Estilo Projetos */
-        .project-card { background: var(--card); border-radius: 12px; padding: 35px; border: 1px solid #334155; margin-bottom: 20px; }
-        .project-img { width: 100%; border-radius: 8px; margin: 20px 0; border: 1px solid #475569; }
-        .tech-tag { background: #0f172a; color: var(--primary); padding: 3px 10px; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.75rem; border: 1px solid var(--primary); margin-right: 5px; }
-        
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
-        th, td { border: 1px solid #334155; padding: 12px; text-align: left; }
-        th { background: #1e3a8a; }
-
-        .warning-box { background: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--warning); padding: 15px; margin: 20px 0; font-size: 0.9rem; }
-        .btn-dl { display: inline-block; background: var(--accent); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px; }
-
-        @media (max-width: 768px) { .cv-grid { grid-template-columns: 1fr; } }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filipe Capelasso — Currículo Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#3b82f6;
+      --accent-2:#06b6d4;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --white: #e6eef8;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg) 0%, #071124 100%);color:var(--white);
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      padding:36px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .wrapper{
+      width:min(1100px,96%);background:linear-gradient(180deg,var(--card),#07111a);
+      border-radius:14px;padding:28px;box-shadow:0 10px 50px rgba(2,6,23,0.8);position:relative;overflow:hidden;
+    }
+    header.top{
+      display:flex;gap:20px;align-items:center;justify-content:space-between;
+    }
+    .left-col{display:flex;gap:20px;align-items:center}
+    .avatar{
+      width:110px;height:110px;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-family:Playfair Display,serif;font-size:26px;font-weight:700;color:white;
+      box-shadow:0 6px 30px rgba(11,27,43,0.6);
+    }
+    .name-block h1{font-family:Playfair Display,serif;margin:0;font-size:28px;}
+    .name-block p{margin:6px 0 0;color:var(--muted);font-size:14px}
+    .contact{display:flex;gap:14px;align-items:center}
+    .contact a{color:var(--muted);text-decoration:none;font-size:14px}
+    .actions{display:flex;gap:8px;align-items:center}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;color:var(--white);cursor:pointer;font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:#022034}
+    main{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:22px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03)}
+    .section-title{font-weight:700;color:var(--accent);margin-bottom:8px}
+    .profile{line-height:1.6;color:var(--muted);font-size:15px}
+    .skills{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .skill{min-width:120px}
+    .skill .label{font-size:12px;color:var(--muted);margin-bottom:6px}
+    .bar{height:8px;background:var(--glass);border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;border-radius:999px;transition:width 900ms cubic-bezier(.2,.9,.3,1)}
+    .meta-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+    .meta{font-size:14px;color:var(--muted)}
+    .timeline{margin-top:10px;display:flex;flex-direction:column;gap:10px}
+    .project{padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.015),transparent);border:1px solid rgba(255,255,255,0.02)}
+    aside .card h3{margin-top:0}
+    .download-row{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:12px}
+    .ai-box{margin-top:14px;padding:12px;border-radius:10px;background:linear-gradient(180deg,rgba(59,130,246,0.06),rgba(59,130,246,0.02));border:1px solid rgba(59,130,246,0.08)}
+    .chat{height:220px;overflow:auto;padding:10px;border-radius:8px;background:linear-gradient(180deg,#02112210,#00000000);border:1px dashed rgba(255,255,255,0.02)}
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+    /* small screens */
+    @media (max-width:880px){main{grid-template-columns:1fr}aside{order:2}}
+    /* print */
+    @media print{body{padding:0;background:white;color:black} .wrapper{box-shadow:none;border-radius:0;padding:0} .actions,.ai-box{display:none}}
+  </style>
 </head>
 <body>
+  <div class="wrapper" id="resume-root">
+    <header class="top">
+      <div class="left-col">
+        <div class="avatar" id="avatar">FC</div>
+        <div class="name-block">
+          <h1 id="nome">Filipe Dantas Capelasso</h1>
+          <p id="cargo">Estudante de Análise e Desenvolvimento de Sistemas — Infraestrutura & Suporte | Analista de TI Jr.</p>
+          <div class="contact" style="margin-top:8px">
+            <a href="tel:+5568974005458">📞 (68) 97400-5458</a>
+            <span style="opacity:.6">•</span>
+            <a href="mailto:filipecapelasso1@gmail.com">✉️ filipecapelasso1@gmail.com</a>
+            <span style="opacity:.6">•</span>
+            <a href="https://www.linkedin.com/in/filipe-capelasso" target="_blank">🔗 LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="theme-toggle" title="Alternar tema">Tema</button>
+        <button class="btn" id="contact-btn" onclick="window.location.href='mailto:filipecapelasso1@gmail.com?subject=Candidatura'">Contactar</button>
+        <button class="btn primary" id="download-pdf">Download PDF</button>
+      </div>
+    </header>
 
-<nav>
-    <a onclick="showPage('home')">Início</a>
-    <a onclick="showPage('sentinela')">Sentinela</a>
-    <a onclick="showPage('wincaos')">WinCaos</a>
-    <a onclick="showPage('space')">Space Invaders</a>
-</nav>
-
-<div class="container">
-
-    <div id="home" class="page active">
-        <div class="cv-header">
-            <h1>FILIPE DANTAS CAPELASSO</h1>
-            <div class="subtitle">Desenvolvedor de Software / Segurança da Informação, Suporte à Empresa e Clientes</div>
+    <main>
+      <section>
+        <div class="card">
+          <div class="section-title">Resumo Profissional</div>
+          <div class="profile" id="resumo">
+            Estudante de Análise e Desenvolvimento de Sistemas com perfil focado em infraestrutura de TI e análise de sistemas. Conhecimentos em suporte técnico, montagem e manutenção de hardware, configuração de sistemas e uso de ferramentas para atividades práticas em campo. Em constante aprendizado; busca oportunidades como Analista de TI Júnior, Auxiliar Técnico ou Estágio, com disponibilidade para viagens e plantões.
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
+            <button class="btn" id="smart-sum">Gerar Resumo Inteligente</button>
+            <button class="btn" id="highlight">Destacar Habilidades</button>
+          </div>
         </div>
 
-        <div class="cv-grid">
-            <div class="left-col">
-                <div class="cv-section">
-                    <h2 class="section-title">Resumo Profissional</h2>
-                    <p>Estudante de Análise e Desenvolvimento de Sistemas em busca de estágio ou primeiro emprego[cite: 88, 91]. Foco em desenvolvimento de software e infraestrutura, suporte geral[cite: 92]. Disponível para cargos de Assistente de Suporte Técnico / TI, estagiário em ADS e outros no setor tecnológico[cite: 93].</p>
-                </div>
-
-                <div class="cv-section" style="margin-top: 30px;">
-                    <h2 class="section-title">Experiência Profissional</h2>
-                    <p><strong>Desenvolvedor Freelancer / Projetos Pessoais</strong> [cite: 99]</p>
-                    <ul style="margin-left: 20px; font-size: 0.95rem;">
-                        <li>Criação de aplicativos personalizados para clientes[cite: 100].</li>
-                        <li>Levantamento de requisitos e arquitetura de lógica em múltiplas linguagens[cite: 101].</li>
-                        <li>Suporte técnico e manutenção contínua das ferramentas desenvolvidas[cite: 102].</li>
-                        <li>Desenvolvedor de Projetos de TI (Freelancer 2025): Sistema de vendas online e automação de pagamentos[cite: 109, 110].</li>
-                    </ul>
-                </div>
+        <div class="card" style="margin-top:14px">
+          <div class="section-title">Formação Acadêmica</div>
+          <div class="timeline">
+            <div class="project">
+              <strong>Análise e Desenvolvimento de Sistemas — Universidade Estácio</strong>
+              <div class="meta">Cursando • Início 2026</div>
             </div>
-
-            <div class="right-col">
-                <div class="cv-section">
-                    <h2 class="section-title">Contato</h2>
-                    <p>📞 (68) 97400-5458 [cite: 95]</p>
-                    <p>📧 filipecapelasso1@gmail.com [cite: 96]</p>
-                    <p>📍 Belo Jardim, Acre [cite: 98]</p>
-                    <a href="https://drive.google.com/uc?export=download&id=1DWuZKG7wny0ewVA2ef45bucUCyN-LTJu" class="btn-dl">📄 Baixar PDF Oficial</a>
-                </div>
-
-                <div class="cv-section" style="margin-top: 30px;">
-                    <h2 class="section-title">Habilidades Técnicas</h2>
-                    <p><strong>Linguagens:</strong> Python, C#, JavaScript, C/C++[cite: 116].</p>
-                    <p><strong>Tecnologias:</strong> .NET, Win32 API, Multithreading, Shell Integration[cite: 115].</p>
-                    <p><strong>Cursos:</strong> CIS Controls 1-18, Microsoft 365, Excel Intermediário, História da IA[cite: 121, 123, 125, 126].</p>
-                </div>
+            <div class="project">
+              <strong>Ensino Médio — Colégio Militar Dom Pedro II</strong>
+              <div class="meta">Rio Branco/AC (2023–2025)</div>
             </div>
+          </div>
         </div>
-    </div>
 
-    <div id="sentinela" class="page">
-        <div class="project-card">
-            <h1>Sentinela Automação 24hrs</h1>
-            <p>Central de comando e monitoramento de infraestrutura em larga escala[cite: 103, 104].</p>
-            
-            <img src="https://raw.githubusercontent.com/FilipeCapelasso/FilipeCapelasso/main/sentinela_print.png" class="project-img" onerror="this.src='https://via.placeholder.com/1000x500/1e293b/f1f5f9?text=Screenshot+Sentinela'">
-            
-            <h3>Objetivo Principal</h3>
-            <p>Foco na <strong>soberania operacional</strong>. O sistema monitora toda a malha tecnológica através de uma interface de baixa latência e integração profunda[cite: 105].</p>
-
-            <h3 style="margin-top: 20px;">Funcionalidades Principais</h3>
-            <table>
-                <thead>
-                    <tr><th>Função</th><th>Descrição</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>Painel de Controle</td><td>Interface gráfica avançada para supervisão 24/7.</td></tr>
-                    <tr><td>Alertas Inteligentes</td><td>Integração via API do Telegram com diagnósticos técnicos.</td></tr>
-                    <tr><td>Intervenção Remota</td><td>Botões de ação nas notificações para reativação de sistemas.</td></tr>
-                    <tr><td>Autossuficiência</td><td>Motor interno que gerencia dependências e banco JSON.</td></tr>
-                    <tr><td>Motor Assíncrono</td><td>Multithreading para processar milhares de unidades sem travar.</td></tr>
-                </tbody>
-            </table>
-
-            <h3 style="margin-top: 20px;">Resiliência e Segurança</h3>
-            <p>O monitoramento utiliza um <strong>Motor Assíncrono</strong>. Em caso de queda de APIs, o sistema utiliza cache local para manter a operação ativa.</p>
-            <p style="font-size: 0.8rem; color: var(--muted); margin-top: 10px;">* Nota: Token em código apenas para teste; recomendado uso de .env.</p>
-        </div>
-    </div>
-
-    <div id="wincaos" class="page">
-        <div class="project-card">
-            <h1>WinCaos - Simulação Educacional</h1>
-            <p>Aplicação experimental em C# focada em Win32 API e Cibersegurança[cite: 106, 107].</p>
-            
-            <div class="warning-box">
-                <strong>AVISO DE SEGURANÇA:</strong> Não é um vírus real, mas utiliza técnicas de malware (pranks) para aprendizado técnico. Execute apenas em Máquinas Virtuais.
+        <div class="card" style="margin-top:14px">
+          <div class="section-title">Projetos & Experiências</div>
+          <div class="timeline" id="projects-list">
+            <div class="project">
+              <strong>Desenvolvedor Freelancer — Projetos Autorais (2024–Presente)</strong>
+              <div class="meta">Criação de aplicações personalizadas, suporte técnico e manutenção de ferramentas desenvolvidas.</div>
             </div>
-
-            <h3 style="margin-top: 20px;">Tecnologias e Conceitos</h3>
-            <ul style="margin-left: 20px;">
-                <li><strong>P/Invoke & Win32 API:</strong> Manipulação de cursor e trilhas via user32.dll.</li>
-                <li><strong>Low-Level Keyboard Hooks:</strong> Filtragem de teclas (Alt+Tab, WinKey) via SetWindowsHookEx.</li>
-                <li><strong>Registry Manipulation:</strong> Persistência local em CurrentVersion\Run.</li>
-                <li><strong>Multithreading:</strong> Gerenciamento em modo STA para criação recursiva de janelas.</li>
-            </ul>
-
-            <h3 style="margin-top: 20px; color: var(--warning);">KILL-SWITCH DE EMERGÊNCIA</h3>
-            <p>Para encerrar: Mantenha <strong>CTRL + SHIFT</strong> e pressione <strong>F12</strong>. Isso restaura a velocidade do mouse e libera os hooks do teclado.</p>
-        </div>
-    </div>
-
-    <div id="space" class="page">
-        <div class="project-card">
-            <h1>Invasores do Espaço</h1>
-            <p>Jogo de tiro espacial clássico desenvolvido em Python.</p>
-            
-            <img src="https://via.placeholder.com/1000x500/1e293b/f1f5f9?text=Gameplay+Space+Invaders" class="project-img">
-
-            <div style="margin-bottom: 20px;">
-                <span class="tech-tag">Python</span><span class="tech-tag">Pygame</span><span class="tech-tag">PyInstaller</span>
+            <div class="project">
+              <strong>Desenvolvedor de Sistema de Vendas Online — Projeto Freelance (2025)</strong>
+              <div class="meta">Sistema de e-commerce com automação de pagamentos e entrega automática de produtos digitais.</div>
             </div>
-
-            <h3>Sobre o Jogo</h3>
-            <p>Projeto focado em jogabilidade progressiva com <strong>5 fases exclusivas</strong>. Para avançar, o piloto deve sobreviver ao tempo exigido em cada nível.</p>
-
-            <h3 style="margin-top: 20px;">Como Jogar</h3>
-            <p>• Setas ou A/D para mover | Espaço para atirar.</p>
-            <p>• Sobreviva até o cronômetro zerar para avançar.</p>
-
-            <h3 style="margin-top: 20px;">Como Rodar</h3>
-            <code style="display: block; background: #000; padding: 10px; border-radius: 5px;">pip install pygame</code>
+            <div class="project">
+              <strong>Sentinela Automação 24hrs — Monitoramento de Infraestrutura</strong>
+              <div class="meta">Central de monitoramento e visibilidade de ecossistemas complexos com camada superior de monitoramento.</div>
+            </div>
+            <div class="project">
+              <strong>Estudo: APIs do Windows (Win32) — Projeto Educacional</strong>
+              <div class="meta">Aplicação experimental para manipulação de componentes de baixo nível do Windows (Win32 API) e análise de resiliência.</div>
+            </div>
+          </div>
         </div>
-    </div>
+      </section>
 
-</div>
+      <aside>
+        <div class="card">
+          <h3 class="section-title">Conhecimentos Técnicos</h3>
+          <div class="meta-list">
+            <div class="meta">Python (Básico)</div>
+            <div class="meta">JavaScript (Básico)</div>
+            <div class="meta">C# / C/C++ (Básico)</div>
+            <div class="meta">.NET • Win32 API</div>
+          </div>
 
-<script>
-    function showPage(pageId) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
-        window.scrollTo(0, 0);
+          <div style="margin-top:12px">
+            <div class="section-title">Tecnologias</div>
+            <div class="skills" id="skills">
+              <div class="skill"><div class="label">Multithreading</div><div class="bar"><i style="width:72%"></i></div></div>
+              <div class="skill"><div class="label">Manipulação de Registro</div><div class="bar"><i style="width:64%"></i></div></div>
+              <div class="skill"><div class="label">Shell Integration</div><div class="bar"><i style="width:58%"></i></div></div>
+              <div class="skill"><div class="label">Controles CIS 1–18</div><div class="bar"><i style="width:52%"></i></div></div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="section-title">Segurança & Ferramentas</div>
+            <div class="meta-list">
+              <div class="meta">Fundamentos de Cibersegurança</div>
+              <div class="meta">Windows | Microsoft 365</div>
+              <div class="meta">Ferramentas manuais de manutenção de infra</div>
+            </div>
+          </div>
+
+          <div class="ai-box">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="font-weight:700">Assistente de Currículo (IA-local)</div>
+              <small style="color:var(--muted)">offline</small>
+            </div>
+            <div style="margin-top:8px;font-size:13px;color:var(--muted)">Pergunte algo (ex.: "disponibilidade", "habilidades", "experiência"): </div>
+            <div style="margin-top:8px" class="chat" id="ai-chat"></div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <input id="ai-input" placeholder="Digite uma pergunta..." style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--white)">
+              <button class="btn" onclick="aiAsk()">Enviar</button>
+            </div>
+          </div>
+
+          <div class="download-row">
+            <small style="color:var(--muted)">CNH: AB (PPD)</small>
+            <small style="color:var(--muted)">Mobilidade: Disponibilidade total</small>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      Currículo gerado dinamicamente — Versão local • Quer que eu personalize mais?
+    </footer>
+  </div>
+
+  <script>
+    // Simple UI behavior and "IA-like" local assistant
+    const resumoEl = document.getElementById('resumo');
+    const aiChat = document.getElementById('ai-chat');
+    const aiInput = document.getElementById('ai-input');
+    const skillsBars = document.querySelectorAll('.bar > i');
+    const smartBtn = document.getElementById('smart-sum');
+    const highlightBtn = document.getElementById('highlight');
+    const downloadBtn = document.getElementById('download-pdf');
+    const themeToggle = document.getElementById('theme-toggle');
+
+    // Animate skill bars on load
+    window.addEventListener('load', () => {
+      setTimeout(()=> skillsBars.forEach((b,i)=> b.style.width = b.style.width || b.getAttribute('data-w') || b.style.width), 300);
+    });
+
+    // Smart summary: simple extractive algorithm
+    smartBtn.addEventListener('click', ()=> {
+      const text = resumoEl.innerText;
+      const sentences = text.match(/[^\.\!\?]+[\.\!\?]*/g) || [text];
+      // score sentences by keyword hits
+      const keywords = ['infraestrutura','suporte','hardware','configuração','analista','estágio','disponibilidade','viagens','manutenção','ferramentas'];
+      const scored = sentences.map(s => {
+        const lower = s.toLowerCase();
+        let score = 0;
+        keywords.forEach(k=>{ if (lower.includes(k)) score += 1; });
+        score += Math.min(3, s.split(' ').length/10);
+        return {s, score};
+      }).sort((a,b)=>b.score-a.score).slice(0,3);
+      const summary = scored.map(x=>x.s.trim()).join(' ');
+      alert('Resumo Inteligente:\n\n' + summary);
+    });
+
+    // Highlight skills: blink top skill bars
+    highlightBtn.addEventListener('click', ()=> {
+      skillsBars.forEach((b,i)=>{
+        b.style.transition = 'box-shadow 300ms';
+        b.style.boxShadow = '0 0 18px rgba(59,130,246,0.6)';
+        setTimeout(()=> b.style.boxShadow = '', 1200 + i*80);
+      });
+    });
+
+    // Local "IA" assistant: keyword matcher
+    function aiAsk(){
+      const q = (aiInput.value || '').toLowerCase().trim();
+      if(!q) return;
+      appendAi('Você: ' + aiInput.value);
+      aiInput.value = '';
+      setTimeout(()=> {
+        let answer = 'Desculpe, não entendi exatamente. Pergunte sobre "disponibilidade", "habilidades" ou "projetos".';
+        if(q.includes('dispon')) answer = 'Total disponibilidade para viagens, deslocamentos, horários flexíveis e plantões.';
+        else if(q.includes('habil') || q.includes('skill') || q.includes('conhecimen')) answer = 'Conhecimentos em Python (básico), JavaScript (básico), C#, C/C++, .NET, Win32 API; suporte técnico, montagem e manutenção de hardware.';
+        else if(q.includes('projet') || q.includes('freelan')) answer = 'Experiência com projetos autorais como desenvolvedor freelancer e sistemas de vendas online com automação de pagamentos.';
+        else if(q.includes('curso') || q.includes('certif')) answer = 'Cursos: Gerenciar Dados com o Microsoft 365; Domínio dos Controles CIS 1 a 18; Excel Intermediário; Introdução à Inteligência Artificial; Como Trabalhar com Computadores e Dispositivos Móveis.';
+        else if(q.includes('contato') || q.includes('email') || q.includes('telefone')) answer = 'Telefone: (68) 97400-5458 • Email: filipecapelasso1@gmail.com';
+        else if(q.includes('objetivo') || q.includes('vaga')) answer = 'Busca vagas como Analista de TI Júnior, Auxiliar Técnico ou Estágio com foco em infraestrutura e análises de sistemas.';
+        appendAi(answer);
+      }, 700);
     }
-</script>
+    function appendAi(msg){
+      const el = document.createElement('div');
+      el.style.marginBottom='8px';
+      el.style.fontSize='13px';
+      el.textContent = msg;
+      aiChat.appendChild(el);
+      aiChat.scrollTop = aiChat.scrollHeight;
+    }
 
+    // Print / PDF
+    downloadBtn.addEventListener('click', ()=> {
+      window.print();
+    });
+
+    // Theme toggle: invert colors (simple)
+    let dark = true;
+    themeToggle.addEventListener('click', ()=> {
+      dark = !dark;
+      document.body.style.background = dark ? 'linear-gradient(180deg,var(--bg) 0%, #071124 100%)' : '#f6f8fb';
+      document.querySelector('.wrapper').style.background = dark ? 'linear-gradient(180deg,var(--card),#07111a)' : '#ffffff';
+      document.querySelectorAll('.card').forEach(c => c.style.background = dark ? 'linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01))' : '#fff');
+      document.querySelectorAll('body, .name-block h1').forEach(x => x.style.color = dark ? '' : '#0b1220');
+    });
+
+    // small UX: pressing Enter in AI input triggers
+    aiInput.addEventListener('keyup', (e)=>{ if(e.key === 'Enter') aiAsk(); });
+  </script>
 </body>
 </html>
