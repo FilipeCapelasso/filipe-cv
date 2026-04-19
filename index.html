@@ -1202,9 +1202,19 @@
         }
 
         .contact-item {
+            display: grid;
+            align-content: start;
+            min-height: 100%;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.10);
             color: #eef7ff;
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.18);
         }
 
         .contact-item strong {
@@ -1422,14 +1432,17 @@
                 </div>
                 <a
                     class="btn btn-ghost"
+                    id="downloadCvButton"
                     href="CV_FILIPE%20DANTAS%20CAPELASSO_TI.pdf"
-                    download="CV_FILIPE_DANTAS_CAPELASSO_TI.pdf"
+                    download="CV_FILIPE DANTAS CAPELASSO_TI.pdf"
+                    data-download-file="CV_FILIPE%20DANTAS%20CAPELASSO_TI.pdf"
+                    data-download-name="CV_FILIPE DANTAS CAPELASSO_TI.pdf"
                 >
                     Baixar CV
                 </a>
                 <a
                     class="btn btn-primary"
-                    href="https://wa.me/5568974005458"
+                    href="https://wa.me/5568974005458?text=Ola%2C%20Filipe%21%20Vi%20seu%20curriculo%20online%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade."
                     target="_blank"
                     rel="noreferrer noopener"
                 >
@@ -1625,7 +1638,7 @@
                             <div class="contact-panel">
                                 <h3>Acionadores rapidos</h3>
                                 <div class="contact-actions">
-                                    <a class="btn btn-primary" href="mailto:filipecapelasso1@gmail.com">Enviar e-mail</a>
+                                    <a class="btn btn-primary" href="mailto:filipecapelasso1@gmail.com?subject=Contato%20profissional%20-%20Curriculo%20online%20de%20Filipe%20Dantas%20Capelasso&body=Ola%2C%20Filipe.%0D%0A%0D%0AVi%20seu%20curriculo%20online%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade.%0D%0A%0D%0AAtenciosamente%2C">Enviar e-mail</a>
                                     <a class="btn btn-ghost" href="https://www.linkedin.com/in/filipe-capelasso/" target="_blank" rel="noreferrer noopener">Abrir LinkedIn</a>
                                 </div>
                             </div>
@@ -1841,13 +1854,13 @@
                     label: "WhatsApp",
                     title: "(68) 97400-5458",
                     text: "Canal rapido para proposta, alinhamento de vaga ou primeiro contato.",
-                    href: "https://wa.me/5568974005458"
+                    href: "https://wa.me/5568974005458?text=Ola%2C%20Filipe%21%20Vi%20seu%20curriculo%20online%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade."
                 },
                 {
                     label: "E-mail",
                     title: "filipecapelasso1@gmail.com",
                     text: "Ideal para enviar descricao de vaga, testes tecnicos ou retorno profissional.",
-                    href: "mailto:filipecapelasso1@gmail.com"
+                    href: "mailto:filipecapelasso1@gmail.com?subject=Contato%20profissional%20-%20Curriculo%20online%20de%20Filipe%20Dantas%20Capelasso&body=Ola%2C%20Filipe.%0D%0A%0D%0AVi%20seu%20curriculo%20online%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade.%0D%0A%0D%0AAtenciosamente%2C"
                 },
                 {
                     label: "LinkedIn",
@@ -1859,7 +1872,9 @@
                     label: "CV em PDF",
                     title: "Versao para download",
                     text: "Arquivo original do curriculo para compartilhar em selecoes ou encaminhamentos.",
-                    href: "CV_FILIPE%20DANTAS%20CAPELASSO_TI.pdf"
+                    href: "CV_FILIPE%20DANTAS%20CAPELASSO_TI.pdf",
+                    download: true,
+                    downloadName: "CV_FILIPE DANTAS CAPELASSO_TI.pdf"
                 }
             ]
         };
@@ -2041,7 +2056,12 @@
             container.innerHTML = resumeData.contactItems
                 .map(
                     (item) => `
-                        <a class="contact-item" href="${item.href}" ${item.href.startsWith("http") ? 'target="_blank" rel="noreferrer noopener"' : ""}>
+                        <a
+                            class="contact-item"
+                            href="${item.href}"
+                            ${item.href.startsWith("http") ? 'target="_blank" rel="noreferrer noopener"' : ""}
+                            ${item.download ? `download="${item.downloadName || ""}" data-download-file="${item.href}" data-download-name="${item.downloadName || ""}"` : ""}
+                        >
                             <span class="contact-label">${item.label}</span>
                             <strong>${item.title}</strong>
                             <p>${item.text}</p>
@@ -2051,6 +2071,21 @@
                 .join("");
 
             document.getElementById("contactStatusText").textContent = resumeData.contactStatus;
+        }
+
+        function setupDownloadLinks() {
+            document.querySelectorAll("[data-download-file]").forEach((link) => {
+                link.addEventListener("click", (event) => {
+                    event.preventDefault();
+
+                    const tempLink = document.createElement("a");
+                    tempLink.href = link.dataset.downloadFile;
+                    tempLink.download = link.dataset.downloadName || "";
+                    document.body.appendChild(tempLink);
+                    tempLink.click();
+                    tempLink.remove();
+                });
+            });
         }
 
         function animateCounters() {
@@ -2310,6 +2345,7 @@
             setupQuickJumps();
             setupScrollSpy();
             setupScrollProgress();
+            setupDownloadLinks();
             setupPointerGlow();
             setFooterYear();
         }
