@@ -721,14 +721,6 @@
             font-size: 0.88rem;
         }
 
-        .formation-shell {
-            padding: 18px;
-            border-radius: 32px;
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(15, 23, 38, 0.08);
-            box-shadow: var(--shadow-soft);
-        }
-
         .formation-layout {
             display: grid;
             grid-template-columns: minmax(340px, 0.9fr) minmax(0, 1.1fr);
@@ -737,19 +729,9 @@
         }
 
         .formation-panel {
+            min-height: 590px;
             display: flex;
             flex-direction: column;
-            min-width: 0;
-            padding: 12px 10px;
-        }
-
-        .formation-panel--education {
-            padding-right: 16px;
-        }
-
-        .formation-panel--courses {
-            padding-left: 24px;
-            border-left: 1px solid rgba(15, 23, 38, 0.08);
         }
 
         .panel {
@@ -851,9 +833,6 @@
             padding: 16px;
             height: 100%;
             scroll-snap-align: start;
-            background: rgba(255, 255, 255, 0.94);
-            border: 1px solid rgba(15, 23, 38, 0.06);
-            box-shadow: 0 10px 24px rgba(15, 23, 38, 0.05);
         }
 
         .course-index {
@@ -1300,16 +1279,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .formation-panel--education,
-            .formation-panel--courses {
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-
-            .formation-panel--courses {
-                border-left: 0;
-                border-top: 1px solid rgba(15, 23, 38, 0.08);
-                padding-top: 22px;
+            .formation-panel {
+                min-height: auto;
             }
         }
 
@@ -1480,26 +1451,24 @@
                     </div>
                 </div>
 
-                <div class="formation-shell reveal">
-                    <div class="formation-layout">
-                        <article class="formation-panel formation-panel--education">
-                            <div class="panel-head">
-                                <h3>Formação acadêmica</h3>
-                                <span class="panel-note">roadmap.education</span>
-                            </div>
-                            <div class="timeline" id="educationList"></div>
-                        </article>
+                <div class="formation-layout">
+                    <article class="panel formation-panel formation-panel--education reveal">
+                        <div class="panel-head">
+                            <h3>Formação acadêmica</h3>
+                            <span class="panel-note">roadmap.education</span>
+                        </div>
+                        <div class="timeline" id="educationList"></div>
+                    </article>
 
-                        <article class="formation-panel formation-panel--courses">
-                            <div class="panel-head">
-                                <h3>Cursos e certificações</h3>
-                                <span class="panel-note">upgrade.skills</span>
-                            </div>
-                            <div class="course-viewport">
-                                <div class="course-list" id="courseList"></div>
-                            </div>
-                        </article>
-                    </div>
+                    <article class="panel formation-panel formation-panel--courses reveal">
+                        <div class="panel-head">
+                            <h3>Cursos e certificações</h3>
+                            <span class="panel-note">upgrade.skills</span>
+                        </div>
+                        <div class="course-viewport">
+                            <div class="course-list" id="courseList"></div>
+                        </div>
+                    </article>
                 </div>
             </section>
 
