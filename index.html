@@ -1387,10 +1387,10 @@
                 <div class="section-heading reveal">
                     <div>
                         <p class="section-kicker">Perfil profissional</p>
-                        <h2></h2>
+                        <h2>Um currículo pensado como sistema vivo, não como folha estática.</h2>
                     </div>
                     <p>
-                        
+                        A proposta aqui é mostrar seu potencial de forma mais forte: um perfil em formação, com base técnica ampla, iniciativa prática e disponibilidade real para operar em suporte, infraestrutura, análise e projetos digitais.
                     </p>
                 </div>
 
@@ -1404,7 +1404,7 @@
                         <h2>Base acadêmica somada a cursos e estudo contínuo.</h2>
                     </div>
                     <p>
-                        
+                        Seu CV mostra uma combinação importante para vagas de entrada: estudo formal em ADS, repertório de ferramentas do ecossistema Microsoft e fundamentos de segurança e operação.
                     </p>
                 </div>
 
@@ -1434,7 +1434,7 @@
                         <h2>Conhecimentos técnicos organizados como módulo de competências.</h2>
                     </div>
                     <p>
-                        
+                        Em vez de uma lista corrida, a página transforma suas tecnologias em um painel claro: linguagens, ecossistema Windows, segurança, multithreading, shell integration e operação prática de infraestrutura.
                     </p>
                 </div>
 
@@ -1446,14 +1446,14 @@
                             <span class="assistant-label" style="color: var(--accent-3);">Leitura guiada do CV</span>
                             <h3>Mapa de foco do perfil</h3>
                             <p>
-                                
+                                Esta leitura destaca onde seu currículo mostra mais energia hoje, com base nos estudos, certificações, projetos e objetivo profissional apresentado.
                             </p>
                             <div class="focus-bars" id="focusBars"></div>
                         </article>
 
                         <article class="focus-card reveal">
                             <span class="assistant-label" style="color: var(--accent-3);">Disponibilidade operacional</span>
-                            <h3></h3>
+                            <h3>Informações adicionais com valor de contratação</h3>
                             <div class="extra-list" id="extraList"></div>
                         </article>
                     </div>
@@ -1478,7 +1478,7 @@
                             <p class="section-kicker" style="color: rgba(238, 247, 255, 0.62);">Contato e próximo passo</p>
                             <h2>Pronto para conversar sobre estágio, suporte, TI júnior e projetos freelance.</h2>
                             <p>
-                                
+                                Se a vaga pede alguém com energia de aprendizado, disponibilidade de campo e vontade real de crescer em tecnologia, esta página já funciona como um convite para a conversa.
                             </p>
 
                             <div class="contact-grid" id="contactGrid"></div>
@@ -1583,11 +1583,26 @@
                 }
             ],
             courses: [
-                "Gerenciar Dados com o Microsoft 365",
-                "Domínio dos Controles CIS 1 a 18 e Fundamentos de Cibersegurança",
-                "Excel Intermediário",
-                "A História da Inteligência Artificial",
-                "Como Trabalhar com Computadores e Dispositivos Móveis"
+                {
+                    title: "Gerenciar Dados com o Microsoft 365",
+                    description: "Uso de recursos do Microsoft 365 para organizar, armazenar e compartilhar dados no ambiente de trabalho."
+                },
+                {
+                    title: "Domínio dos Controles CIS 1 a 18 e Fundamentos de Cibersegurança",
+                    description: "Estudo de controles CIS, redução de riscos e fundamentos de proteção aplicados à segurança da informação."
+                },
+                {
+                    title: "Excel Intermediário",
+                    description: "Aplicação de funções, organização de planilhas e tratamento de dados em nível intermediário."
+                },
+                {
+                    title: "A História da Inteligência Artificial",
+                    description: "Panorama da evolução da inteligência artificial, seus marcos históricos e principais contextos de uso."
+                },
+                {
+                    title: "Como Trabalhar com Computadores e Dispositivos Móveis",
+                    description: "Noções de uso, configuração e rotina de trabalho com computadores e dispositivos móveis."
+                }
             ],
             skills: [
                 {
@@ -1785,17 +1800,21 @@
         function renderCourses() {
             const container = document.getElementById("courseList");
             container.innerHTML = resumeData.courses
-                .map(
-                    (course, index) => `
+                .map((course, index) => {
+                    const title = typeof course === "string" ? course : course.title;
+                    const description =
+                        typeof course === "string" ? "" : course.description || "";
+
+                    return `
                         <article class="course-item">
                             <span class="course-index">${String(index + 1).padStart(2, "0")}</span>
                             <div>
-                                <strong>${course}</strong>
-                                <p>Camada complementar que reforça operação, organização e base técnica do perfil.</p>
+                                <strong>${title}</strong>
+                                ${description ? `<p>${description}</p>` : ""}
                             </div>
                         </article>
-                    `
-                )
+                    `;
+                })
                 .join("");
         }
 
