@@ -2066,40 +2066,17 @@
             document.getElementById("footerYear").textContent = new Date().getFullYear();
         }
 
-        function init() {
-            renderHeroSummary();
-            renderFloatingChips();
-            renderMeta();
-            renderStats();
-            renderCapabilities();
-            renderEducation();
-            renderCourses();
-            renderSkills();
-            renderFocus();
-            renderExtras();
-            renderProjects();
-            renderContacts();
+        function setupImageModal() {
+            const profileAvatar = document.getElementById("profileAvatar");
+            const imageModal = document.getElementById("imageModal");
+            const imageModalImg = document.getElementById("imageModalImg");
+            const imageModalClose = document.getElementById("imageModalClose");
 
-            animateCounters();
-            revealOnScroll();
-            animateFocusBars();
-            setupQuickJumps();
-            setupScrollSpy();
-            setupScrollProgress();
-            setupEmbeddedDownloadLinks();
-            setupPointerGlow();
-            setFooterYear();
-        }
+            if (!profileAvatar || !imageModal || !imageModalImg || !imageModalClose) return;
 
-        document.addEventListener("DOMContentLoaded", init);
-    
-        const profileAvatar = document.getElementById("profileAvatar");
-        const imageModal = document.getElementById("imageModal");
-        const imageModalImg = document.getElementById("imageModalImg");
-        const imageModalClose = document.getElementById("imageModalClose");
-
-        if (profileAvatar && imageModal && imageModalImg && imageModalClose) {
             const avatarImg = profileAvatar.querySelector("img");
+
+            if (!avatarImg) return;
 
             const openImageModal = () => {
                 imageModalImg.src = avatarImg.currentSrc || avatarImg.src;
@@ -2141,6 +2118,34 @@
             });
         }
 
+        function init() {
+            renderHeroSummary();
+            renderFloatingChips();
+            renderMeta();
+            renderStats();
+            renderCapabilities();
+            renderEducation();
+            renderCourses();
+            renderSkills();
+            renderFocus();
+            renderExtras();
+            renderProjects();
+            renderContacts();
+
+            animateCounters();
+            revealOnScroll();
+            animateFocusBars();
+            setupQuickJumps();
+            setupScrollSpy();
+            setupScrollProgress();
+            setupEmbeddedDownloadLinks();
+            setupPointerGlow();
+            setupImageModal();
+            setFooterYear();
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
+
     </script>
 
     <div class="image-modal" id="imageModal" aria-hidden="true">
@@ -2153,5 +2158,3 @@
 
 </body>
 </html>
-
-
