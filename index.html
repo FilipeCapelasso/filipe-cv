@@ -1778,55 +1778,68 @@
        DATA
     ═══════════════════════════════════════════ */
     const data = {
+        const data = {
         heroSummary: "Estudante de Análise e Desenvolvimento de Sistemas com perfil voltado à infraestrutura de TI e análise de sistemas. Reúne conhecimentos em suporte técnico, montagem e manutenção de hardware, configuração de sistemas e ferramentas para operação em campo. Em aprendizado contínuo, busca oportunidades para atuar como Analista de TI Júnior, Auxiliar Técnico, Estagiário ou em projetos freelance com disponibilidade para viagens, deslocamentos e plantões.",
         chips: ["ADS em andamento","Infraestrutura de TI","Suporte técnico","Windows & Microsoft 365","Projetos autorais","Disponibilidade total"],
         meta: [
             { label: "Endereço", value: "Rua Princesinha, Belo Jardim 1, Rio Branco — AC • mobilidade para deslocamentos e viagens" },
-            { label: "Objetivo atual",  value: "Estágio, suporte técnico, TI júnior e projetos com entrega real" },
+            { label: "Objetivo atual", value: "Estágio, suporte técnico, TI júnior e projetos com entrega real" },
             { label: "Contato principal", value: "WhatsApp, e-mail e LinkedIn prontos para abordagem imediata" }
         ],
         stats: [
             { label: "Projetos em destaque", value: 4, suffix: "+" },
-            { label: "Cursos listados",       value: 13, suffix: ""  },
-            { label: "Mobilidade",            value: 100, suffix: "%" },
-            { label: "Marco acadêmico",       value: 2026, suffix: "" }
+            { label: "Cursos listados", value: 18, suffix: "" },
+            { label: "Mobilidade", value: 100, suffix: "%" },
+            { label: "Marco acadêmico", value: 2026, suffix: "" }
         ],
         capabilities: [
             { kicker: "01 · Infraestrutura", title: "Base forte em operação de TI", text: "Manutenção, montagem, configuração de sistemas e atuação prática em ambientes de infraestrutura e suporte em campo.", tags: ["Hardware","Configuração","Atendimento em campo"] },
-            { kicker: "02 · Suporte",        title: "Perfil útil para suporte técnico", text: "Diagnóstico inicial, apoio ao usuário, organização de demandas técnicas e resolução operacional no dia a dia.", tags: ["Suporte","Diagnóstico","Rotina operacional"] },
+            { kicker: "02 · Suporte", title: "Perfil útil para suporte técnico", text: "Diagnóstico inicial, apoio ao usuário, organização de demandas técnicas e resolução operacional no dia a dia.", tags: ["Suporte","Diagnóstico","Rotina operacional"] },
             { kicker: "03 · Desenvolvimento",title: "Aprendizado aplicado em software", text: "Projetos autorais que mostram construção de soluções reais, integração de pagamentos, automação de processos e entrega concreta.", tags: ["Automação","Sistemas","Freelance"] },
-            { kicker: "04 · Segurança",      title: "Visão inicial de cibersegurança", text: "CIS 1-18, fundamentos de cibersegurança, Windows e Microsoft 365 reforçam um olhar de controle, padrão e boas práticas.", tags: ["CIS 1-18","Windows","Microsoft 365"] }
+            { kicker: "04 · Segurança", title: "Visão inicial de cibersegurança", text: "CIS 1-18, fundamentos de cibersegurança, Windows e Microsoft 365 reforçam um olhar de controle, padrão e boas práticas.", tags: ["CIS 1-18","Windows","Microsoft 365"] }
         ],
         education: [
             { meta: "Ensino superior · conclusão prevista em Julho de 2028.", title: "Análise e Desenvolvimento de Sistemas", text: "Universidade Estácio · curso em andamento com foco em sistemas, estrutura de software e repertório técnico para o mercado." },
-            { meta: "Ensino médio · 2023 a 2025",                   title: "Colégio Militar Dom Pedro II",          text: "Formação acadêmica em regime militar, focada no desenvolvimento de valores éticos, senso de dever e excelência no desempenho escolar e na vida pessoal." }
+            { meta: "Ensino médio · 2023 a 2025", title: "Colégio Militar Dom Pedro II", text: "Formação acadêmica em regime militar, focada no desenvolvimento de valores éticos, senso de dever e excelência no desempenho escolar e na vida pessoal." }
         ],
         courses: [
-            { title: "Gerenciar Dados com o Microsoft 365",               desc: "Uso de recursos do Microsoft 365 para organizar, armazenar e compartilhar dados no ambiente de trabalho." },
-            { title: "Domínio dos Controles CIS 1 a 18 e Fundamentos de Cibersegurança", desc: "Estudo de controles CIS, redução de riscos e fundamentos de proteção aplicados à segurança da informação." },
-            { title: "Excel Intermediário",                               desc: "Aplicação de funções, organização de planilhas e tratamento de dados em nível intermediário." },
-            { title: "A História da Inteligência Artificial",             desc: "Panorama da evolução da IA, seus marcos históricos e principais contextos de uso." },
+            // PRODUTIVIDADE E FERRAMENTAS
             { title: "Como Trabalhar com Computadores e Dispositivos Móveis", desc: "Noções de uso, configuração e rotina de trabalho com computadores e dispositivos móveis." },
+            { title: "Como Trabalhar e Colaborar On-line", desc: "Práticas e ferramentas essenciais para comunicação, produtividade e colaboração eficiente em ambientes virtuais de trabalho." },
+            { title: "Excel Intermediário", desc: "Aplicação de funções, organização de planilhas e tratamento de dados em nível intermediário." },
+            { title: "Excel Avançado", desc: "Aprofundamento em fórmulas, análise de dados, automação de planilhas e criação de relatórios mais completos no Excel." },
+            { title: "Gerenciar Dados com o Microsoft 365", desc: "Uso de recursos do Microsoft 365 para organizar, armazenar e compartilhar dados no ambiente de trabalho." },
+            
+            // SISTEMAS E IA
+            { title: "Sistemas Operacionais - Turma 2026A", desc: "Compreensão do funcionamento dos sistemas operacionais, gerenciamento de recursos e interação entre software e hardware." },
+            { title: "Estrutura de Dados - Turma 2026A", desc: "Estudo das principais estruturas de organização de dados, com foco em lógica, eficiência e base para desenvolvimento de software." },
+            { title: "Projeto de Sistemas Web - Turma 2026A", desc: "Desenvolvimento de soluções web com planejamento, estruturação de páginas e visão prática de projetos para internet." },
+            { title: "Automação de Sistemas - Turma 2026A", desc: "Aplicação de técnicas para automatizar rotinas, integrar processos e aumentar a eficiência operacional em sistemas." },
+            { title: "A História da Inteligência Artificial", desc: "Panorama da evolução da IA, seus marcos históricos e principais contextos de uso." },
+            
+            // HARDWARE E REDES
+            { title: "Manutenção de Computadores: hardware, software e evolução - Turma 2026A", desc: "Estudo aprofundado dos componentes de hardware, ciclo de vida do software e a evolução tecnológica dos computadores, com foco em diagnóstico, reparo e atualização de máquinas." },
             { title: "Manutenção de Computadores: simuladores, sistemas operacionais e montagem - Turma 2026A", desc: "Formação voltada à montagem, simulação e preparação de computadores, com prática em componentes e instalação de sistemas." },
-            { title: "Redes de Computadores II - Turma 2026A",            desc: "Aprofundamento em redes com foco em comunicação entre dispositivos, configuração de ambientes e continuidade dos fundamentos técnicos." },
-            { title: "Redes de Computadores - Turma 2026A",               desc: "Introdução aos conceitos de redes, conectividade, estrutura de comunicação e funcionamento básico de ambientes interligados." },
-            { title: "Estrutura de Dados - Turma 2026A",                  desc: "Estudo das principais estruturas de organização de dados, com foco em lógica, eficiência e base para desenvolvimento de software." },
-            { title: "Automação de Sistemas - Turma 2026A",               desc: "Aplicação de técnicas para automatizar rotinas, integrar processos e aumentar a eficiência operacional em sistemas." },
-            { title: "Projeto de Sistemas Web - Turma 2026A",             desc: "Desenvolvimento de soluções web com planejamento, estruturação de páginas e visão prática de projetos para internet." },
-            { title: "Sistemas Operacionais - Turma 2026A",               desc: "Compreensão do funcionamento dos sistemas operacionais, gerenciamento de recursos e interação entre software e hardware." },
-            { title: "Manutenção de Computadores: hardware, software e evolução - Turma 2026A", desc: "Estudo aprofundado dos componentes de hardware, ciclo de vida do software e a evolução tecnológica dos computadores, com foco em diagnóstico, reparo e atualização de máquinas." }
+            { title: "Redes de Computadores - Turma 2026A", desc: "Introdução aos conceitos de redes, conectividade, estrutura de comunicação e funcionamento básico de ambientes interligados." },
+            { title: "Redes de Computadores II - Turma 2026A", desc: "Aprofundamento em redes com foco em comunicação entre dispositivos, configuração de ambientes e continuidade dos fundamentos técnicos." },
+            
+            // SEGURANÇA CIBERNÉTICA
+            { title: "Fundamentos da Segurança Cibernética - Introdução ao CIS Controls", desc: "Base da segurança da informação, incluindo frameworks, gestão e visão geral dos controles CIS." },
+            { title: "Segurança Cibernética: Controles 1 a 6 do CIS Controls", desc: "Estudo inicial dos controles CIS com foco em redução de riscos e proteção básica." },
+            { title: "Segurança Cibernética: Controles 7 a 12 do CIS Controls", desc: "Gestão de vulnerabilidades, auditoria, proteção contra ameaças e infraestrutura de rede." },
+            { title: "Segurança Cibernética: Controles 13 a 18 do CIS Controls", desc: "Defesa de rede, segurança de aplicações, resposta a incidentes e testes de invasão." }
         ],
         skills: [
-            { kicker: "Linguagens",    title: "Base de programação",    items: ["Python (básico)","JavaScript (básico)","C# (básico)","C/C++ (básico)",".NET","Win32 API"] },
-            { kicker: "Tecnologias",   title: "Ecossistema técnico",    items: ["Multithreading","Manipulação de registro","Shell integration","Controles CIS 1-18"] },
-            { kicker: "Segurança",     title: "Fundamentos de proteção",items: ["Cibersegurança","Windows","Microsoft 365","Boas práticas de ambiente"] },
-            { kicker: "Ferramentas",   title: "Operação e manutenção",  items: ["Manutenção mecânica","Infraestrutura física de TI","Suporte em campo","Organização técnica"] }
+            { kicker: "Linguagens", title: "Base de programação", items: ["Python (básico)","JavaScript (básico)","C# (básico)","C/C++ (básico)",".NET","Win32 API"] },
+            { kicker: "Tecnologias", title: "Ecossistema técnico", items: ["Multithreading","Manipulação de registro","Shell integration","Controles CIS 1-18"] },
+            { kicker: "Segurança", title: "Fundamentos de proteção",items: ["Cibersegurança","Windows","Microsoft 365","Boas práticas de ambiente"] },
+            { kicker: "Ferramentas", title: "Operação e manutenção", items: ["Manutenção mecânica","Infraestrutura física de TI","Suporte em campo","Organização técnica"] }
         ],
         focus: [
             { title: "Infraestrutura e operação", value: 92 },
-            { title: "Suporte técnico",           value: 89 },
-            { title: "Desenvolvimento aplicado",  value: 78 },
-            { title: "Segurança e padronização",  value: 74 }
+            { title: "Suporte técnico", value: 89 },
+            { title: "Desenvolvimento aplicado", value: 78 },
+            { title: "Segurança e padronização", value: 74 }
         ],
         extras: [
             "CNH categoria AB (PPD).",
@@ -1835,10 +1848,10 @@
             "Perfil colaborativo, com foco em trabalho em equipe e entrega de resultados."
         ],
         projects: [
-            { badge: "Freelance",     title: "Desenvolvedor Freelancer",       meta: "2024 - presente · projetos autorais e atendimento autônomo", text: "Atuação na criação de aplicativos personalizados para clientes externos, cobrindo levantamento de requisitos, arquitetura, implementação e manutenção contínua.", points: ["Construção de soluções sob medida com leitura de necessidade real do cliente.","Suporte técnico contínuo e evolução das ferramentas após a entrega inicial."], tags: ["Requisitos","Arquitetura","Implementação"] },
-            { badge: "E-commerce",    title: "Sistema de Vendas Online",        meta: "2025 · projeto freelancer", text: "Desenvolvimento de um sistema completo de e-commerce com automação de pagamentos e entrega automática de produtos digitais.", points: ["Pensado para fluxo completo de venda, pagamento e distribuição sem fricção.","Mostra iniciativa para unir software, automação e experiência do usuário."], tags: ["Pagamento","Entrega automática","Sistema digital"] },
-            { badge: "Monitoramento", title: "Sentinela Automação 24h",         meta: "Projeto autoral · monitoramento de infraestrutura", text: "Central de monitoramento de infraestrutura em larga escala, com visão unificada de sistemas, redes e unidades operacionais. Plataforma agnóstica a linguagem, com processamento assíncrono para alta performance e baixa latência.", points: ["Monitoramento completo de sistema, rede e operações com cobertura para múltiplas regiões e unidades.","Recuperação automática de falhas, operação resiliente com cache local e auditoria com logs e análise de desempenho em tempo real."], tags: ["Infraestrutura","Observabilidade","Alta disponibilidade"] },
-            { badge: "Windows Lab",   title: "WinCaos – Simulação Educacional de Sistema (Windows)", meta: "Projeto educacional · C# · Win32 API · cibersegurança", text: "Aplicação experimental em C# utilizando Win32 API para simular falhas críticas de sistema em ambiente controlado, com foco em cibersegurança, comportamento do SO e resiliência de interface.", points: ["Integração com Win32 API, manipulação de baixo nível, hooks de teclado e controle de eventos globais.","Uso de multithreading e simulação de persistência via Registro do Windows para análise educacional de segurança e resposta do sistema."], tags: ["C#","Win32 API","Simulação educacional"] }
+            { badge: "Freelance", title: "Desenvolvedor Freelancer", meta: "2024 - presente · projetos autorais e atendimento autônomo", text: "Atuação na criação de aplicativos personalizados para clientes externos, cobrindo levantamento de requisitos, arquitetura, implementação e manutenção contínua.", points: ["Construção de soluções sob medida com leitura de necessidade real do cliente.","Suporte técnico contínuo e evolução das ferramentas após a entrega inicial."], tags: ["Requisitos","Arquitetura","Implementação"] },
+            { badge: "E-commerce", title: "Sistema de Vendas Online", meta: "2025 · projeto freelancer", text: "Desenvolvimento de um sistema completo de e-commerce com automação de pagamentos e entrega automática de produtos digitais.", points: ["Pensado para fluxo completo de venda, pagamento e distribuição sem fricção.","Mostra iniciativa para unir software, automação e experiência do usuário."], tags: ["Pagamento","Entrega automática","Sistema digital"] },
+            { badge: "Monitoramento", title: "Sentinela Automação 24h", meta: "Projeto autoral · monitoramento de infraestrutura", text: "Central de monitoramento de infraestrutura em larga escala, com visão unificada de sistemas, redes e unidades operacionais. Plataforma agnóstica a linguagem, com processamento assíncrono para alta performance e baixa latência.", points: ["Monitoramento completo de sistema, rede e operações com cobertura para múltiplas regiões e unidades.","Recuperação automática de falhas, operação resiliente com cache local e auditoria com logs e análise de desempenho em tempo real."], tags: ["Infraestrutura","Observabilidade","Alta disponibilidade"] },
+            { badge: "Windows Lab", title: "WinCaos – Simulação Educacional de Sistema (Windows)", meta: "Projeto educacional · C# · Win32 API · cibersegurança", text: "Aplicação experimental em C# utilizando Win32 API para simular falhas críticas de sistema em ambiente controlado, com foco em cibersegurança, comportamento do SO e resiliência de interface.", points: ["Integração com Win32 API, manipulação de baixo nível, hooks de teclado e controle de eventos globais.","Uso de multithreading e simulação de persistência via Registro do Windows para análise educacional de segurança e resposta do sistema."], tags: ["C#","Win32 API","Simulação educacional"] }
         ],
         contactStatus: "Disponível para processos seletivos, networking profissional, oportunidades de estágio, posições júnior e projetos sob demanda.",
         contactItems: [
