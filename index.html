@@ -7,7 +7,7 @@
     <meta name="description" content="Currículo de Filipe Dantas Capelasso com foco em Análise e Desenvolvimento de Sistemas, infraestrutura de TI, suporte técnico e projetos autorais.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         /* ═══════════════════════════════════════════
            TOKENS — light theme (default)
@@ -64,6 +64,33 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
 
+        /* ═══ FONTE EXCLUSIVA PARA NÚMEROS (unicode-range) ═══ */
+        /* DM Mono substitui automaticamente 0-9 em qualquer elemento da página */
+        @font-face {
+            font-family: "Outfit";
+            src: url("https://fonts.gstatic.com/s/dmmono/v14/aFTU7PB1QTsUX8KYvrGyIYetlAo.woff2") format("woff2");
+            font-weight: 300 900;
+            font-style: normal;
+            unicode-range: U+0030-0039; /* 0-9 */
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "JetBrains Mono";
+            src: url("https://fonts.gstatic.com/s/dmmono/v14/aFTU7PB1QTsUX8KYvrGyIYetlAo.woff2") format("woff2");
+            font-weight: 300 900;
+            font-style: normal;
+            unicode-range: U+0030-0039;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: "Fraunces";
+            src: url("https://fonts.gstatic.com/s/dmmono/v14/aFTU7PB1QTsUX8KYvrGyIYetlAo.woff2") format("woff2");
+            font-weight: 300 900;
+            font-style: normal;
+            unicode-range: U+0030-0039;
+            font-display: swap;
+        }
+
         body {
             min-height: 100vh;
             font-family: "Outfit", sans-serif;
@@ -108,12 +135,12 @@
         .progress-bar {
             position: fixed;
             top: 0; left: 0;
-            width: 0; height: 3px;
+            width: 0; height: 2px;
             z-index: 100;
             background: linear-gradient(90deg, var(--accent), var(--accent-warm), var(--accent-teal));
             background-size: 200%;
             animation: gradShift 3s linear infinite;
-            box-shadow: 0 0 18px rgba(0,102,255,0.4);
+            box-shadow: 0 0 12px rgba(77,148,255,0.5);
         }
         @keyframes gradShift { to { background-position: -200%; } }
 
@@ -618,6 +645,18 @@
             text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-kicker::before {
+            content: "";
+            display: inline-block;
+            width: 18px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 1px;
+            flex-shrink: 0;
         }
 
         .section-title {
@@ -1221,6 +1260,118 @@
             font-size: 0.88rem;
         }
 
+        /* ═══ SCROLL-TO-TOP BUTTON ═══ */
+        .scroll-top {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+            opacity: 0;
+            transform: translateY(16px) scale(0.85);
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+            z-index: 80;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .scroll-top:hover { background: var(--accent-warm); transform: translateY(-3px) scale(1.06); }
+        .scroll-top:active { transform: scale(0.95); }
+
+        /* ═══ TOPBAR COMPACT ON SCROLL ═══ */
+        .topbar.scrolled {
+            padding: 7px 10px 7px 8px;
+            box-shadow: 0 10px 26px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.14);
+        }
+
+        /* ═══ SECTION ACCENT LINE ═══ */
+        .section-accent {
+            display: inline-block;
+            width: 40px;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-teal));
+            margin-bottom: 12px;
+        }
+
+        /* ═══ CARD GLOW ON HOVER ═══ */
+        .cap-card:hover,
+        .edu-card:hover,
+        .project-card:hover,
+        .stat-card:hover {
+            border-color: rgba(77,148,255,0.22);
+        }
+        [data-theme="light"] .cap-card:hover,
+        [data-theme="light"] .edu-card:hover,
+        [data-theme="light"] .project-card:hover,
+        [data-theme="light"] .stat-card:hover {
+            border-color: rgba(0,102,255,0.20);
+        }
+
+        /* ═══ IMPROVED LINK UNDERLINE ANIM ═══ */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link.is-active::after {
+            content: "";
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* ═══ SKILL PILL HOVER ═══ */
+        .skill-pill:hover {
+            background: rgba(77,148,255,0.28);
+            border-color: rgba(77,148,255,0.4);
+            transform: translateY(-1px);
+            transition: all 0.2s ease;
+        }
+
+        /* ═══ PROJECT TAG HOVER ═══ */
+        .project-tag:hover {
+            background: rgba(0,194,168,0.18);
+            transition: background 0.2s ease;
+        }
+
+        /* ═══ CONTACT ITEM FEATURED ENHANCED ═══ */
+        .contact-item-featured:hover {
+            background: rgba(255,255,255,0.13) !important;
+        }
+
+        /* ═══ FOCUS BAR LABEL TABULAR ═══ */
+        .focus-head span:last-child {
+            font-family: "DM Mono", "JetBrains Mono", monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* ═══ COURSE COUNT BADGE ═══ */
+        #courseCount {
+            background: var(--accent-soft);
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+        }
+
         /* ═══════════════════════════════════════════
            REVEAL ANIMATION
         ═══════════════════════════════════════════ */
@@ -1610,6 +1761,9 @@
         </footer>
     </div>
 
+    <!-- Scroll To Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">↑</button>
+
     <!-- Image Modal -->
     <div class="img-modal" id="imgModal" aria-hidden="true">
         <div class="img-modal-box" role="dialog" aria-modal="true" aria-label="Foto de perfil ampliada">
@@ -1633,7 +1787,7 @@
         ],
         stats: [
             { label: "Projetos em destaque", value: 4, suffix: "+" },
-            { label: "Cursos listados",       value: 12, suffix: ""  },
+            { label: "Cursos listados",       value: 13, suffix: ""  },
             { label: "Mobilidade",            value: 100, suffix: "%" },
             { label: "Marco acadêmico",       value: 2026, suffix: "" }
         ],
@@ -1659,7 +1813,8 @@
             { title: "Estrutura de Dados - Turma 2026A",                  desc: "Estudo das principais estruturas de organização de dados, com foco em lógica, eficiência e base para desenvolvimento de software." },
             { title: "Automação de Sistemas - Turma 2026A",               desc: "Aplicação de técnicas para automatizar rotinas, integrar processos e aumentar a eficiência operacional em sistemas." },
             { title: "Projeto de Sistemas Web - Turma 2026A",             desc: "Desenvolvimento de soluções web com planejamento, estruturação de páginas e visão prática de projetos para internet." },
-            { title: "Sistemas Operacionais - Turma 2026A",               desc: "Compreensão do funcionamento dos sistemas operacionais, gerenciamento de recursos e interação entre software e hardware." }
+            { title: "Sistemas Operacionais - Turma 2026A",               desc: "Compreensão do funcionamento dos sistemas operacionais, gerenciamento de recursos e interação entre software e hardware." },
+            { title: "Manutenção de Computadores: hardware, software e evolução - Turma 2026A", desc: "Estudo aprofundado dos componentes de hardware, ciclo de vida do software e a evolução tecnológica dos computadores, com foco em diagnóstico, reparo e atualização de máquinas." }
         ],
         skills: [
             { kicker: "Linguagens",    title: "Base de programação",    items: ["Python (básico)","JavaScript (básico)","C# (básico)","C/C++ (básico)",".NET","Win32 API"] },
@@ -1887,6 +2042,28 @@
     }
 
     /* ═══════════════════════════════════════════
+       SCROLL TO TOP
+    ═══════════════════════════════════════════ */
+    function setupScrollTop() {
+        const btn = document.getElementById("scrollTop");
+        window.addEventListener("scroll", () => {
+            btn.classList.toggle("visible", window.scrollY > 400);
+        }, { passive: true });
+        btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    }
+
+    /* ═══════════════════════════════════════════
+       TOPBAR COMPACT ON SCROLL
+    ═══════════════════════════════════════════ */
+    function setupTopbarCompact() {
+        const topbar = document.querySelector(".topbar");
+        if (!topbar) return;
+        window.addEventListener("scroll", () => {
+            topbar.classList.toggle("scrolled", window.scrollY > 60);
+        }, { passive: true });
+    }
+
+    /* ═══════════════════════════════════════════
        DARK MODE
     ═══════════════════════════════════════════ */
     function setupTheme() {
@@ -1978,6 +2155,8 @@
         setupCourseSlider();
         setupImageModal();
         setupDownloads();
+        setupScrollTop();
+        setupTopbarCompact();
     });
     </script>
 </body>
