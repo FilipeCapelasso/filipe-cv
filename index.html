@@ -1550,9 +1550,406 @@
         }
         .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 20px; }
         .panel-head h3 { font-size: 1.25rem; font-weight: 700; }
+
+        /* ═══════════════════════════════════════════
+           INTRO OVERLAY
+        ═══════════════════════════════════════════ */
+        #intro-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #intro-overlay.intro-exit {
+            animation: introWipeUp 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+            pointer-events: none;
+        }
+
+        @keyframes introWipeUp {
+            0%   { clip-path: inset(0 0 0 0); opacity: 1; }
+            60%  { opacity: 1; }
+            100% { clip-path: inset(100% 0 0 0); opacity: 0; }
+        }
+
+        #intro-canvas {
+            position: absolute;
+            inset: 0;
+            opacity: 0.20;
+        }
+
+        .intro-scanlines {
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0,255,100,0.025) 2px,
+                rgba(0,255,100,0.025) 4px
+            );
+            pointer-events: none;
+            z-index: 1;
+            animation: scanMove 12s linear infinite;
+        }
+
+        @keyframes scanMove {
+            from { background-position: 0 0; }
+            to   { background-position: 0 120px; }
+        }
+
+        .intro-vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 45%, rgba(0,0,0,0.85) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .intro-hex-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='52' viewBox='0 0 60 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 2 L45 2 L60 27 L45 52 L15 52 L0 27Z' fill='none' stroke='rgba(0,255,100,0.04)' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: 60px 52px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .intro-corner {
+            position: absolute;
+            width: 60px; height: 60px;
+            border-color: rgba(0,255,100,0.3);
+            border-style: solid;
+            z-index: 2;
+            opacity: 0;
+            animation: cornerIn 0.5s ease forwards;
+        }
+        .intro-corner-tl { top:20px; left:20px; border-width: 2px 0 0 2px; animation-delay: 0.1s; }
+        .intro-corner-tr { top:20px; right:20px; border-width: 2px 2px 0 0; animation-delay: 0.15s; }
+        .intro-corner-bl { bottom:20px; left:20px; border-width: 0 0 2px 2px; animation-delay: 0.2s; }
+        .intro-corner-br { bottom:20px; right:20px; border-width: 0 2px 2px 0; animation-delay: 0.25s; }
+
+        @keyframes cornerIn {
+            from { opacity: 0; transform: scale(1.3); }
+            to   { opacity: 1; transform: scale(1); }
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 760px;
+            padding: 0 24px;
+            gap: 0;
+        }
+
+        .intro-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: rgba(0,255,136,0.55);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 0.2s;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .intro-terminal-box {
+            width: 100%;
+            background: rgba(0, 14, 8, 0.90);
+            border: 1px solid rgba(0,255,100,0.22);
+            border-radius: 10px;
+            padding: 18px 22px 20px;
+            box-shadow: 0 0 70px rgba(0,255,100,0.07),
+                        0 0 200px rgba(0,255,100,0.04),
+                        inset 0 1px 0 rgba(0,255,100,0.08);
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+            margin-bottom: 18px;
+        }
+
+        .intro-terminal-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .intro-terminal-titlebar {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(0,255,100,0.10);
+        }
+
+        .intro-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .intro-dot-r { background: #ff5f57; }
+        .intro-dot-y { background: #ffbd2e; }
+        .intro-dot-g { background: #28c840; }
+
+        .intro-terminal-title {
+            flex: 1;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.64rem;
+            letter-spacing: 0.14em;
+            color: rgba(0,255,100,0.35);
+            text-transform: uppercase;
+        }
+
+        .intro-lines {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(0.72rem, 1.5vw, 0.82rem);
+            line-height: 2;
+            color: rgba(0,255,100,0.82);
+            min-height: 130px;
+            position: relative;
+        }
+
+        .intro-line {
+            display: block;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.35s ease, transform 0.35s ease;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .intro-line.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .intro-line-prompt  { color: rgba(0,255,100,0.45); }
+        .intro-line-hl      { color: #00ffaa; }
+        .intro-line-blue    { color: #5ea2ff; }
+        .intro-line-success { color: #00ff88; font-weight: 600; }
+        .intro-line-warn    { color: #ffbd2e; }
+
+        .intro-cursor-blink {
+            display: inline-block;
+            width: 7px; height: 15px;
+            background: #00ff88;
+            margin-left: 3px;
+            vertical-align: middle;
+            animation: cursorBlink 1s step-end infinite;
+        }
+
+        @keyframes cursorBlink {
+            0%,100% { opacity: 1; }
+            50%      { opacity: 0; }
+        }
+
+        .intro-progress-wrap {
+            width: 100%;
+            height: 2px;
+            background: rgba(0,255,100,0.09);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 36px;
+            opacity: 0;
+            transition: opacity 0.5s ease 0.3s;
+        }
+
+        .intro-progress-wrap.visible { opacity: 1; }
+
+        .intro-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00ff88, #4d94ff, #00ffaa);
+            background-size: 200%;
+            box-shadow: 0 0 10px rgba(0,255,136,0.6);
+            animation: gradSlide 2s linear infinite;
+            transition: width 0.08s linear;
+        }
+
+        @keyframes gradSlide {
+            0%   { background-position: 0% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .intro-bigname {
+            font-family: 'Fraunces', serif;
+            font-size: clamp(3.2rem, 11vw, 7.5rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: #fff;
+            line-height: 0.92;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.93) translateY(16px);
+            transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+            margin-bottom: 18px;
+        }
+
+        .intro-bigname.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .name-glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .name-glitch::before,
+        .name-glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+        }
+
+        .intro-bigname.glitching .name-glitch::before {
+            opacity: 0.75;
+            color: #ff0055;
+            clip-path: polygon(0 22%, 100% 22%, 100% 42%, 0 42%);
+            transform: translateX(-5px);
+            animation: glA 0.12s steps(2) infinite;
+        }
+
+        .intro-bigname.glitching .name-glitch::after {
+            opacity: 0.75;
+            color: #00ffff;
+            clip-path: polygon(0 62%, 100% 62%, 100% 78%, 0 78%);
+            transform: translateX(5px);
+            animation: glB 0.12s steps(2) infinite 0.05s;
+        }
+
+        @keyframes glA {
+            0%  { clip-path: polygon(0 22%, 100% 22%, 100% 42%, 0 42%); transform: translateX(-5px); }
+            50% { clip-path: polygon(0 52%, 100% 52%, 100% 70%, 0 70%); transform: translateX(5px); }
+        }
+
+        @keyframes glB {
+            0%  { clip-path: polygon(0 62%, 100% 62%, 100% 78%, 0 78%); transform: translateX(5px); }
+            50% { clip-path: polygon(0 15%, 100% 15%, 100% 32%, 0 32%); transform: translateX(-5px); }
+        }
+
+        .intro-tagline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(0.6rem, 1.4vw, 0.75rem);
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(77,148,255,0.75);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.6s ease 0.4s;
+        }
+
+        .intro-tagline.show { opacity: 1; }
+
+        .intro-skip-btn {
+            position: absolute;
+            bottom: 22px;
+            right: 22px;
+            z-index: 10;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(0,255,100,0.35);
+            background: transparent;
+            border: 1px solid rgba(0,255,100,0.18);
+            border-radius: 5px;
+            padding: 7px 14px;
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+            opacity: 0;
+            animation: fadeUp 0.5s ease forwards 0.5s;
+        }
+
+        .intro-skip-btn:hover {
+            color: rgba(0,255,100,0.9);
+            border-color: rgba(0,255,100,0.5);
+            background: rgba(0,255,100,0.05);
+        }
+
+        .intro-flash {
+            position: absolute;
+            inset: 0;
+            background: #fff;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .intro-flash.active {
+            animation: flashOut 0.4s ease forwards;
+        }
+
+        @keyframes flashOut {
+            0%   { opacity: 0.18; }
+            100% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- ═══ INTRO OVERLAY ═══ -->
+    <div id="intro-overlay">
+        <canvas id="intro-canvas"></canvas>
+        <div class="intro-hex-overlay"></div>
+        <div class="intro-scanlines"></div>
+        <div class="intro-vignette"></div>
+        <div class="intro-flash" id="intro-flash"></div>
+
+        <!-- corner brackets -->
+        <div class="intro-corner intro-corner-tl"></div>
+        <div class="intro-corner intro-corner-tr"></div>
+        <div class="intro-corner intro-corner-bl"></div>
+        <div class="intro-corner intro-corner-br"></div>
+
+        <div class="intro-content">
+            <div class="intro-badge">CURRÍCULO ONLINE · 2026 · FILIPE CAPELASSO</div>
+
+            <div class="intro-terminal-box" id="intro-terminal-box">
+                <div class="intro-terminal-titlebar">
+                    <span class="intro-dot intro-dot-r"></span>
+                    <span class="intro-dot intro-dot-y"></span>
+                    <span class="intro-dot intro-dot-g"></span>
+                    <span class="intro-terminal-title">SHELL — CAPELASSO_BOOT.sh</span>
+                </div>
+                <div class="intro-lines" id="intro-lines">
+                    <span class="intro-cursor-blink"></span>
+                </div>
+            </div>
+
+            <div class="intro-progress-wrap" id="intro-progress-wrap">
+                <div class="intro-progress-fill" id="intro-progress-fill"></div>
+            </div>
+
+            <div class="intro-bigname" id="intro-bigname">
+                <span class="name-glitch" data-text="FILIPE">FILIPE</span>
+                <br>
+                <span class="name-glitch" data-text="CAPELASSO">CAPELASSO</span>
+            </div>
+            <div class="intro-tagline" id="intro-tagline">ADS &nbsp;·&nbsp; INFRAESTRUTURA &nbsp;·&nbsp; SEGURANÇA CIBERNÉTICA</div>
+        </div>
+
+        <button class="intro-skip-btn" id="intro-skip-btn">PULAR →</button>
+    </div>
+    <!-- ═══ FIM INTRO ═══ -->
+
     <div class="progress-bar" id="progressBar"></div>
     <div class="orb orb-a"></div>
     <div class="orb orb-b"></div>
@@ -2162,7 +2559,143 @@
         setupScrollTop();
         setupTopbarCompact();
     });
+    /* ═══════════════════════════════════════════
+       INTRO ANIMATION
+    ═══════════════════════════════════════════ */
+    (function () {
+        const overlay      = document.getElementById('intro-overlay');
+        const canvas       = document.getElementById('intro-canvas');
+        const terminalBox  = document.getElementById('intro-terminal-box');
+        const linesEl      = document.getElementById('intro-lines');
+        const progressWrap = document.getElementById('intro-progress-wrap');
+        const progressFill = document.getElementById('intro-progress-fill');
+        const bigname      = document.getElementById('intro-bigname');
+        const tagline      = document.getElementById('intro-tagline');
+        const skipBtn      = document.getElementById('intro-skip-btn');
+        const flash        = document.getElementById('intro-flash');
+
+        if (!overlay) return;
+
+        // Block scroll while intro plays
+        document.body.style.overflow = 'hidden';
+
+        // ─── Matrix rain canvas ───
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width  = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const matrixChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>/{}[]();:.=+-*#@!ADS·TI·JS·PY·C#·NET·CIS·API·SSH·TCP·DNS·HTTP·OS·ADS';
+        const fz = 13;
+        let drops = [];
+
+        function initDrops() {
+            const cols = Math.floor(canvas.width / fz);
+            drops = Array(cols).fill(1);
+        }
+        initDrops();
+        window.addEventListener('resize', initDrops);
+
+        let matrixRaf;
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0,0,0,0.055)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.font = `${fz}px 'JetBrains Mono', monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const ch = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                const bright = Math.random() > 0.85;
+                ctx.fillStyle = bright ? '#00ff88' : 'rgba(0,180,70,0.45)';
+                ctx.fillText(ch, i * fz, drops[i] * fz);
+                if (drops[i] * fz > canvas.height && Math.random() > 0.974) drops[i] = 0;
+                drops[i]++;
+            }
+            matrixRaf = requestAnimationFrame(drawMatrix);
+        }
+        drawMatrix();
+
+        // ─── Terminal lines ───
+        const termLines = [
+            { text: '> BOOT SEQUENCE INICIADO...', cls: 'intro-line-prompt', delay: 120 },
+            { text: '> IDENTIFICANDO OPERADOR: FILIPE.D.CAPELASSO', cls: 'intro-line-hl', delay: 750 },
+            { text: '> MÓDULO: ANÁLISE E DESENVOLVIMENTO DE SISTEMAS', cls: 'intro-line-blue', delay: 1420 },
+            { text: '> STACK: Python · JS · C# · Redes · CIS Controls · Win32', cls: '', delay: 2080 },
+            { text: '> PROJETOS: Sentinela 24h · WinCaos · E-Commerce · Freelance', cls: '', delay: 2720 },
+            { text: '> STATUS: DISPONÍVEL PARA OPORTUNIDADES  ✓', cls: 'intro-line-success', delay: 3360 },
+        ];
+
+        // Show terminal box
+        setTimeout(() => {
+            terminalBox.classList.add('visible');
+            progressWrap.classList.add('visible');
+
+            // Progress bar animation over ~4100ms
+            let pct = 0;
+            const progStep = () => {
+                pct = Math.min(pct + (100 / (4100 / 50)), 100);
+                progressFill.style.width = `${pct}%`;
+                if (pct < 100) setTimeout(progStep, 50);
+            };
+            progStep();
+        }, 300);
+
+        // Inject terminal lines
+        const cursor = linesEl.querySelector('.intro-cursor-blink');
+        termLines.forEach(({ text, cls, delay }) => {
+            setTimeout(() => {
+                const span = document.createElement('span');
+                span.className = `intro-line ${cls}`;
+                span.textContent = text;
+                linesEl.insertBefore(span, cursor);
+                // Force reflow then add show class
+                requestAnimationFrame(() => requestAnimationFrame(() => span.classList.add('show')));
+            }, delay + 300);
+        });
+
+        // ─── Big name reveal + glitch ───
+        let exitTriggered = false;
+
+        function triggerGlitch() {
+            bigname.classList.add('glitching');
+            setTimeout(() => bigname.classList.remove('glitching'), 100 + Math.random() * 80);
+        }
+
+        setTimeout(() => {
+            // Flash effect
+            flash.classList.add('active');
+            setTimeout(() => flash.classList.remove('active'), 400);
+
+            bigname.classList.add('show');
+            tagline.classList.add('show');
+
+            // 3 glitch bursts
+            const glitchTimes = [300, 500, 750];
+            glitchTimes.forEach(t => setTimeout(triggerGlitch, t));
+        }, 4200);
+
+        // ─── Exit intro ───
+        function exitIntro() {
+            if (exitTriggered) return;
+            exitTriggered = true;
+            cancelAnimationFrame(matrixRaf);
+            overlay.classList.add('intro-exit');
+            setTimeout(() => {
+                overlay.remove();
+                document.body.style.overflow = '';
+            }, 950);
+        }
+
+        // Auto exit
+        setTimeout(exitIntro, 5900);
+
+        // Skip button
+        skipBtn.addEventListener('click', exitIntro);
+    })();
+
     </script>
 </body>
 </html>
-
